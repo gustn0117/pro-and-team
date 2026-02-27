@@ -27,7 +27,9 @@ export default function Header() {
       const el = document.getElementById(id);
       if (!el) return;
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
         { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
       );
       observer.observe(el);
@@ -41,23 +43,27 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-navy/[0.97] backdrop-blur-xl shadow-lg shadow-black/10 py-3"
-          : "bg-transparent py-5"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo — serif */}
         <a href="#hero" className="group flex items-center gap-3">
           <div className="flex flex-col">
-            <span className={`font-bold tracking-wide text-gold-gradient transition-all duration-300 ${scrolled ? "text-lg" : "text-xl"}`}>
+            <span
+              className={`font-bold font-serif tracking-wide text-gold-gradient-static transition-all duration-300 ${
+                scrolled ? "text-lg" : "text-xl"
+              }`}
+            >
               Pro &amp; Team
             </span>
-            <span className="text-[9px] tracking-[0.3em] text-gray-400/80 uppercase font-medium">
+            <span className="text-[9px] tracking-[0.3em] text-gray-400/70 uppercase font-medium">
               IP Law Firm
             </span>
           </div>
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav — animated underlines */}
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
@@ -65,16 +71,13 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative text-[13px] font-medium tracking-wide px-4 py-2 rounded-md transition-all duration-200 ${
+                className={`animated-underline relative text-[13px] font-medium tracking-wide px-4 py-2 transition-all duration-200 ${
                   isActive
-                    ? "text-gold bg-gold/[0.08]"
-                    : "text-gray-400 hover:text-gold hover:bg-white/[0.03]"
+                    ? "text-gold active"
+                    : "text-gray-400 hover:text-gold"
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gold rounded-full" />
-                )}
               </a>
             );
           })}
@@ -102,7 +105,7 @@ export default function Header() {
           mobileOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="mx-4 mt-2 mb-2 bg-navy-light/95 backdrop-blur-xl rounded-xl border border-white/5 overflow-hidden">
+        <nav className="mx-4 mt-3 mb-2 bg-navy-light/95 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
             return (
@@ -110,12 +113,15 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block px-5 py-3.5 text-sm font-medium border-b border-white/[0.03] last:border-0 transition-colors ${
+                className={`flex items-center gap-3 px-6 py-4 text-sm font-medium border-b border-white/[0.03] last:border-0 transition-colors ${
                   isActive
                     ? "text-gold bg-gold/[0.06]"
                     : "text-gray-400 hover:text-gold hover:bg-white/[0.03]"
                 }`}
               >
+                {isActive && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                )}
                 {item.label}
               </a>
             );
