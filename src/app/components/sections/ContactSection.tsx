@@ -64,6 +64,16 @@ export default function ContactSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,90,0.06)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(36,48,68,0.4)_0%,_transparent_50%)]" />
 
+      {/* Grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.012]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(212,175,90,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,90,1) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
       {/* Section number */}
       <div
         className="section-number bottom-6 right-8 md:right-16"
@@ -74,14 +84,25 @@ export default function ContactSection() {
 
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Morphing blobs */}
         <div
-          className="absolute -top-[15%] -right-[10%] w-[500px] h-[500px] rounded-full border border-gold/[0.04]"
-          style={{ animation: "rotateSlowly 100s linear infinite" }}
+          className="morph-blob absolute -top-[15%] -right-[10%] w-[500px] h-[500px] border border-gold/[0.04]"
+          style={{ animationDuration: "25s" }}
         />
         <div
-          className="absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] rounded-full border border-gold/[0.03]"
-          style={{ animation: "rotateSlowly 80s linear infinite reverse" }}
+          className="morph-blob absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] border border-gold/[0.03]"
+          style={{ animationDuration: "20s", animationDelay: "-8s" }}
         />
+
+        {/* Orbiting dot */}
+        <div className="absolute top-1/3 right-[20%] w-1 h-1">
+          <div
+            className="w-2 h-2 rounded-full bg-gold/15 blur-[2px]"
+            style={{ animation: "gradientOrbit 25s linear infinite" }}
+          />
+        </div>
+
+        {/* Gold guide lines */}
         <div className="absolute top-1/4 right-[10%] w-px h-48 bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
         <div className="absolute bottom-1/4 left-[10%] w-px h-48 bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
       </div>
@@ -113,15 +134,20 @@ export default function ContactSection() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group glass-card rounded-2xl p-8 text-center hover:border-gold/20 transition-all duration-400"
+              className="group glass-card rounded-2xl p-8 text-center hover:border-gold/20 transition-all duration-400 relative overflow-hidden"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mx-auto mb-5 group-hover:bg-gold/15 group-hover:scale-110 transition-all duration-300">
-                {item.icon}
+              {/* Diagonal shimmer on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/[0.02] to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative">
+                <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mx-auto mb-5 group-hover:bg-gold/15 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gold/10 transition-all duration-300">
+                  {item.icon}
+                </div>
+                <p className="text-[11px] text-gold-dark font-medium uppercase tracking-wider mb-2">
+                  {item.label}
+                </p>
+                <p className="text-gray-400 text-sm">{item.value}</p>
               </div>
-              <p className="text-[11px] text-gold-dark font-medium uppercase tracking-wider mb-2">
-                {item.label}
-              </p>
-              <p className="text-gray-400 text-sm">{item.value}</p>
             </div>
           ))}
         </div>
@@ -130,7 +156,7 @@ export default function ContactSection() {
         <div className="text-center">
           <a
             href="#hero"
-            className="group inline-flex items-center gap-3 px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400 relative"
+            className="btn-glow group inline-flex items-center gap-3 px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400 relative"
           >
             <span className="relative z-10 font-serif text-base">Pro &amp; Team</span>
             <svg

@@ -2,6 +2,38 @@
 
 import { useEffect, useState } from "react";
 
+function ParticleField() {
+  // Generate particle positions deterministically to avoid hydration mismatch
+  const particles = Array.from({ length: 40 }, (_, i) => ({
+    left: `${(i * 7.3 + 3) % 100}%`,
+    bottom: `${(i * 11.7 + 5) % 100}%`,
+    size: 1.5 + (i % 3),
+    dur: `${14 + (i % 8) * 2}s`,
+    delay: `${(i % 12) * 1.5}s`,
+    opacity: 0.3 + (i % 5) * 0.12,
+  }));
+
+  return (
+    <div className="hero-particles">
+      {particles.map((p, i) => (
+        <span
+          key={i}
+          className="hero-particle"
+          style={{
+            left: p.left,
+            bottom: p.bottom,
+            width: p.size,
+            height: p.size,
+            "--dur": p.dur,
+            animationDelay: p.delay,
+            opacity: p.opacity,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -30,16 +62,36 @@ export default function HeroSection() {
 
       {/* ── Grid pattern ── */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.015]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(212,175,90,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,90,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* ── Decorative shapes ── */}
+      {/* ── CSS Particle Field ── */}
+      <ParticleField />
+
+      {/* ── Morphing blobs ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="morph-blob absolute -top-[20%] -right-[15%] w-[600px] h-[600px] bg-gold/[0.02] blur-[100px]"
+          style={{ animationDuration: "18s" }}
+        />
+        <div
+          className="morph-blob absolute -bottom-[20%] -left-[15%] w-[500px] h-[500px] bg-gold/[0.015] blur-[80px]"
+          style={{ animationDuration: "22s", animationDelay: "-5s" }}
+        />
+
+        {/* Orbiting gradient dot */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1">
+          <div
+            className="w-3 h-3 rounded-full bg-gold/20 blur-sm"
+            style={{ animation: "gradientOrbit 30s linear infinite" }}
+          />
+        </div>
+
         {/* Rotating rings */}
         <div
           className="absolute -top-[10%] -right-[10%] w-[600px] h-[600px] rounded-full border border-gold/[0.06]"
@@ -54,37 +106,35 @@ export default function HeroSection() {
           style={{ animation: "rotateSlowly 100s linear infinite" }}
         />
 
-        {/* Floating orbs */}
+        {/* Vertical scan line */}
         <div
-          className="absolute top-[18%] left-[8%] w-[350px] h-[350px] rounded-full bg-gold/[0.025] blur-[80px]"
-          style={{ animation: "float 12s ease-in-out infinite" }}
-        />
-        <div
-          className="absolute bottom-[20%] right-[12%] w-[280px] h-[280px] rounded-full bg-gold/[0.02] blur-[60px]"
-          style={{ animation: "floatSlow 15s ease-in-out infinite" }}
+          className="absolute top-0 left-[40%] w-px h-32 bg-gradient-to-b from-gold/[0.08] to-transparent"
+          style={{ animation: "lineScan 12s linear infinite" }}
         />
 
-        {/* Vertical guide lines */}
-        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-gold/[0.05] to-transparent" />
-        <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-gold/[0.04] to-transparent" />
-
-        {/* Horizontal center line */}
-        <div className="absolute top-[50%] left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/[0.04] to-transparent" />
+        {/* Guide lines */}
+        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-gold/[0.04] to-transparent" />
+        <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-gold/[0.03] to-transparent" />
+        <div className="absolute top-[50%] left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/[0.03] to-transparent" />
 
         {/* Corner brackets */}
-        <div className="absolute top-10 left-10 w-20 h-20 border-l border-t border-gold/[0.1]" />
-        <div className="absolute top-10 right-10 w-20 h-20 border-r border-t border-gold/[0.1]" />
-        <div className="absolute bottom-10 left-10 w-20 h-20 border-l border-b border-gold/[0.1]" />
-        <div className="absolute bottom-10 right-10 w-20 h-20 border-r border-b border-gold/[0.1]" />
+        <div className="absolute top-10 left-10 w-24 h-24 border-l border-t border-gold/[0.08]" />
+        <div className="absolute top-10 right-10 w-24 h-24 border-r border-t border-gold/[0.08]" />
+        <div className="absolute bottom-10 left-10 w-24 h-24 border-l border-b border-gold/[0.08]" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 border-r border-b border-gold/[0.08]" />
 
         {/* Floating geometric shapes */}
         <div
-          className="absolute top-[28%] right-[22%] w-16 h-16 border border-gold/[0.08] rotate-45"
-          style={{ animation: "float 7s ease-in-out infinite 1s" }}
+          className="absolute top-[28%] right-[22%] w-20 h-20 border border-gold/[0.06] rotate-45"
+          style={{ animation: "float 8s ease-in-out infinite 1s" }}
         />
         <div
-          className="absolute bottom-[30%] left-[18%] w-10 h-10 border border-gold/[0.06] rotate-12"
-          style={{ animation: "floatSlow 9s ease-in-out infinite 2s" }}
+          className="absolute bottom-[30%] left-[18%] w-12 h-12 border border-gold/[0.05] rotate-12"
+          style={{ animation: "floatSlow 10s ease-in-out infinite 2s" }}
+        />
+        <div
+          className="absolute top-[60%] right-[35%] w-6 h-6 bg-gold/[0.03] rotate-45"
+          style={{ animation: "float 6s ease-in-out infinite 3s" }}
         />
       </div>
 
@@ -96,12 +146,13 @@ export default function HeroSection() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <span className="inline-block text-[10px] tracking-[0.5em] uppercase text-gold/70 font-medium border border-gold/20 px-6 py-2.5 rounded-full backdrop-blur-sm">
+          <span className="inline-flex items-center gap-3 text-[10px] tracking-[0.5em] uppercase text-gold/70 font-medium border border-gold/20 px-7 py-3 rounded-full backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold/40 animate-pulse" />
             International IP Law Firm
           </span>
         </div>
 
-        {/* Main heading — serif */}
+        {/* Main heading */}
         <h1
           className={`mb-5 transition-all duration-1000 delay-200 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -124,7 +175,7 @@ export default function HeroSection() {
         {/* Animated gold line */}
         <div
           className={`mx-auto h-px mb-8 transition-all delay-400 ${
-            loaded ? "w-28 opacity-100" : "w-0 opacity-0"
+            loaded ? "w-32 opacity-100" : "w-0 opacity-0"
           }`}
           style={{ transitionDuration: "1500ms" }}
         >
@@ -150,16 +201,17 @@ export default function HeroSection() {
         >
           <a
             href="#contact"
-            className="group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
+            className="btn-glow group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
           >
             <span className="relative z-10">상담 문의</span>
             <div className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </a>
           <a
             href="#practice-areas"
-            className="px-10 py-4 border border-gold/30 text-gold text-sm tracking-wide font-semibold rounded-sm hover:bg-gold/10 hover:border-gold/60 transition-all duration-400"
+            className="group px-10 py-4 border border-gold/30 text-gold text-sm tracking-wide font-semibold rounded-sm hover:bg-gold/10 hover:border-gold/60 transition-all duration-400 relative overflow-hidden"
           >
-            주요업무 보기
+            <span className="relative z-10">주요업무 보기</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-gold/0 via-gold/5 to-gold/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
           </a>
         </div>
 
@@ -174,8 +226,8 @@ export default function HeroSection() {
             { num: "180+", label: "해외 분쟁(건)" },
             { num: "300+", label: "계약·협상(건)" },
           ].map((s, i) => (
-            <div key={i} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-gold/90 font-serif">
+            <div key={i} className="text-center group">
+              <p className="text-3xl md:text-4xl font-bold text-gold/90 font-serif group-hover:text-gold transition-colors">
                 {s.num}
               </p>
               <p className="text-[10px] text-gray-500 tracking-wider mt-1.5 uppercase">
@@ -186,13 +238,25 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── Bottom gradient fade ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cream to-transparent" />
+      {/* ── Wave divider at bottom ── */}
+      <div className="wave-divider wave-divider--bottom">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120Z"
+            fill="#f8f6f0"
+          />
+          <path
+            d="M0,80 C240,110 480,20 720,80 C960,110 1200,20 1440,80 L1440,120 L0,120Z"
+            fill="#f8f6f0"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
 
       {/* ── Scroll indicator ── */}
       <a
         href="#about"
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-gray-500 hover:text-gold transition-all z-10 ${
+        className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-gray-500 hover:text-gold transition-all z-10 ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
         style={{ transitionDelay: "1200ms", transitionDuration: "700ms" }}

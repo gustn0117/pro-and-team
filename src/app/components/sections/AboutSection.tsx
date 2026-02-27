@@ -116,11 +116,24 @@ export default function AboutSection() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
 
+      {/* Diagonal accent lines */}
+      <div className="absolute top-20 left-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/8 to-transparent" />
+      <div className="absolute bottom-20 right-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/8 to-transparent" />
+
+      {/* Background pattern dots */}
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #d4af5a 0.8px, transparent 0.8px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
       {/* Large section number */}
       <div className="section-number top-6 right-8 md:right-16">01</div>
 
       <div className="max-w-6xl mx-auto px-6 relative">
-        {/* Section header — left-aligned */}
+        {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/80 to-gold/20" />
@@ -177,31 +190,43 @@ export default function AboutSection() {
               <div
                 key={idx}
                 ref={counter.ref}
-                className="group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 border border-gray-100/50"
+                className="card-3d"
               >
-                {/* Top accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20 group-hover:h-1.5 transition-all duration-300" />
-                {/* Hover glow */}
-                <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-gold/[0.03] rounded-full group-hover:bg-gold/[0.08] transition-colors duration-500" />
+                <div className="card-3d-inner gradient-border-animated diagonal-shimmer relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50">
+                  {/* Top accent */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20" />
+                  {/* Hover glow */}
+                  <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-gold/[0.03] rounded-full group-hover:bg-gold/[0.08] transition-colors duration-500" />
 
-                <div className="relative">
-                  <div className="w-10 h-10 rounded-lg bg-navy/5 flex items-center justify-center text-gold-dark/70 mb-5">
-                    {stat.icon}
+                  <div className="relative">
+                    <div className="w-10 h-10 rounded-lg bg-navy/5 flex items-center justify-center text-gold-dark/70 mb-5">
+                      {stat.icon}
+                    </div>
+                    <div className="flex items-baseline gap-1 mb-3">
+                      <span className="text-4xl md:text-5xl font-bold text-gold tabular-nums font-serif">
+                        {counter.count}
+                      </span>
+                      <span className="text-xl font-bold text-gold-dark">{stat.suffix}</span>
+                      <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
+                    </div>
+                    <p className="text-sm font-semibold text-navy mb-1">{stat.label}</p>
+                    <p className="text-xs text-gray-400">{stat.sublabel}</p>
                   </div>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className="text-4xl md:text-5xl font-bold text-gold tabular-nums font-serif">
-                      {counter.count}
-                    </span>
-                    <span className="text-xl font-bold text-gold-dark">{stat.suffix}</span>
-                    <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
-                  </div>
-                  <p className="text-sm font-semibold text-navy mb-1">{stat.label}</p>
-                  <p className="text-xs text-gray-400">{stat.sublabel}</p>
                 </div>
               </div>
             );
           })}
         </div>
+      </div>
+
+      {/* Wave divider to next section */}
+      <div className="wave-divider wave-divider--bottom">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80Z"
+            fill="#ffffff"
+          />
+        </svg>
       </div>
     </section>
   );

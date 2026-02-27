@@ -136,11 +136,20 @@ export default function PracticeAreasSection() {
       <div className="absolute bottom-20 right-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
 
+      {/* Background dot pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.015]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #b8963e 0.6px, transparent 0.6px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
       {/* Section number */}
       <div className="section-number top-6 left-8 md:left-16">02</div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Section header — left-aligned */}
+        {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/80 to-gold/20" />
@@ -164,48 +173,60 @@ export default function PracticeAreasSection() {
           {areas.map((area, idx) => (
             <div
               key={idx}
-              className="group relative bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gold/25 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
+              className="card-3d"
             >
-              {/* Gold left accent on hover */}
-              <div className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gradient-to-b group-hover:from-gold/40 group-hover:via-gold group-hover:to-gold/40 transition-all duration-300" />
+              <div className="card-3d-inner gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-500">
+                {/* Gold left accent on hover */}
+                <div className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gradient-to-b group-hover:from-gold/40 group-hover:via-gold group-hover:to-gold/40 transition-all duration-300" />
 
-              {/* Card number */}
-              <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
-                {String(idx + 1).padStart(2, "0")}
-              </div>
-
-              {/* Hover glow */}
-              <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-gold/0 group-hover:bg-gold/[0.04] transition-all duration-500 blur-3xl" />
-
-              <div className="relative p-7 md:p-8">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold/80 flex items-center justify-center group-hover:bg-navy-light group-hover:text-gold group-hover:shadow-lg group-hover:shadow-navy/20 transition-all duration-300">
-                    {area.icon}
-                  </div>
-                  <div className="pt-0.5">
-                    <h3 className="text-[15px] font-bold text-navy leading-snug">
-                      {area.title}
-                    </h3>
-                    <p className="text-[11px] text-gold-dark/70 mt-0.5 font-medium tracking-wide">
-                      {area.titleEn}
-                    </p>
-                  </div>
+                {/* Card number */}
+                <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
+                  {String(idx + 1).padStart(2, "0")}
                 </div>
-                <ul className="space-y-2.5 pl-16">
-                  {area.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
-                    >
-                      <span className="text-gold/40 mt-[5px] flex-shrink-0 text-[6px]">&#9670;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+
+                {/* Hover glow */}
+                <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-gold/0 group-hover:bg-gold/[0.04] transition-all duration-500 blur-3xl" />
+
+                <div className="relative p-7 md:p-8">
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold/80 flex items-center justify-center group-hover:bg-navy-light group-hover:text-gold group-hover:shadow-lg group-hover:shadow-navy/20 transition-all duration-300">
+                      {area.icon}
+                    </div>
+                    <div className="pt-0.5">
+                      <h3 className="text-[15px] font-bold text-navy leading-snug">
+                        {area.title}
+                      </h3>
+                      <p className="text-[11px] text-gold-dark/70 mt-0.5 font-medium tracking-wide">
+                        {area.titleEn}
+                      </p>
+                    </div>
+                  </div>
+                  <ul className="space-y-2.5 pl-16">
+                    {area.items.map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
+                      >
+                        <span className="text-gold/40 mt-[5px] flex-shrink-0 text-[6px]">&#9670;</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Wave divider to next section */}
+      <div className="wave-divider wave-divider--bottom">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0,30 C480,80 960,0 1440,50 L1440,80 L0,80Z"
+            fill="#f8f6f0"
+          />
+        </svg>
       </div>
     </section>
   );
