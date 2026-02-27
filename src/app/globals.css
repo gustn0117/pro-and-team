@@ -3,7 +3,7 @@
 @theme {
   --color-navy: #1a2332;
   --color-navy-light: #243044;
-  --color-navy-dark: #111827;
+  --color-navy-dark: #0f1720;
   --color-gold: #d4af5a;
   --color-gold-dark: #b8963e;
   --color-gold-light: #e8c96e;
@@ -22,11 +22,7 @@ body {
   word-break: keep-all;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ===== Keyframe Animations ===== */
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -39,8 +35,8 @@ body {
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.35; }
 }
 
 @keyframes bounceDown {
@@ -48,57 +44,123 @@ body {
   50% { transform: translateY(8px); }
 }
 
-@keyframes expandWidth {
-  from { width: 0; }
-  to { width: 80px; }
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-/* Scroll reveal */
+@keyframes rotateSlowly {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dashMove {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ===== Scroll Reveal ===== */
+
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Staggered children reveal */
-.reveal-stagger > * {
+.reveal-left {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
-.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
-.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
-.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
-.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; }
-.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; }
-.reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.35s; }
-.reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.4s; }
-.reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.45s; }
-.reveal-stagger.visible > *:nth-child(10) { transition-delay: 0.5s; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.06s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.18s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.30s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.36s; }
+.reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.42s; }
+.reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.48s; }
+.reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.54s; }
+.reveal-stagger.visible > *:nth-child(10) { transition-delay: 0.60s; }
 .reveal-stagger.visible > * {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Gold gradient text */
+/* ===== Gold gradient text ===== */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #d4af5a 0%, #e8c96e 50%, #b8963e 100%);
+  background: linear-gradient(135deg, #e8c96e 0%, #d4af5a 40%, #b8963e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Reduced motion */
+/* ===== Shimmer gold line ===== */
+.shimmer-gold {
+  background: linear-gradient(90deg, transparent, #d4af5a, transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ===== Section divider wave ===== */
+.section-divider {
+  position: relative;
+}
+.section-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af5a, transparent);
+}
+
+/* ===== Glass card ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 90, 0.08);
+}
+
+/* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; transition: none; }
   .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
 }
