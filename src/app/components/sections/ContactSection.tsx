@@ -58,7 +58,7 @@ export default function ContactSection() {
   const section = useReveal();
 
   return (
-    <section id="contact" className="py-28 md:py-40 bg-navy scroll-mt-20 relative overflow-hidden">
+    <section id="contact" className="py-28 md:py-40 bg-navy scroll-mt-20 relative overflow-hidden noise-overlay">
       {/* Multi-layer background */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-navy-light/20" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,90,0.06)_0%,_transparent_50%)]" />
@@ -152,26 +152,39 @@ export default function ContactSection() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <a
-            href="#hero"
-            className="btn-glow group inline-flex items-center gap-3 px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400 relative"
-          >
-            <span className="relative z-10 font-serif text-base">Pro &amp; Team</span>
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-4 h-4 relative z-10 group-hover:-translate-y-0.5 transition-transform"
+        {/* CTA area */}
+        <div className="glass-card rounded-2xl p-8 md:p-10 text-center max-w-2xl mx-auto">
+          <div className="ornament-divider mb-6">
+            <span className="text-gold/30 text-xs">◆</span>
+          </div>
+          <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
+            전문 상담을 원하시나요?
+          </h3>
+          <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+            국제 IP 분쟁, 특허 전략, 라이선싱 등 어떤 주제든 편하게 문의해 주세요.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#hero"
+              className="rotating-border btn-glow group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
             >
-              <path
-                fillRule="evenodd"
-                d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </a>
+              <span className="relative z-10 font-serif text-base">Pro &amp; Team</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </a>
+            <a
+              href="#hero"
+              className="group flex items-center gap-2.5 text-[12px] text-gray-400 hover:text-gold tracking-wider uppercase transition-colors duration-200"
+            >
+              <span>Back to Top</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform">
+                <path
+                  fillRule="evenodd"
+                  d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>

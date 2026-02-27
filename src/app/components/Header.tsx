@@ -96,6 +96,12 @@ export default function Header() {
                 </a>
               );
             })}
+            <a
+              href="#contact"
+              className="ml-4 px-5 py-2 bg-gold/10 border border-gold/25 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/20 hover:border-gold/50 transition-all duration-300"
+            >
+              상담 문의
+            </a>
           </nav>
 
           {/* Mobile Toggle */}

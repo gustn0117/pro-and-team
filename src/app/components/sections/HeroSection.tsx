@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 function ParticleField() {
-  // Generate particle positions deterministically to avoid hydration mismatch
   const particles = Array.from({ length: 40 }, (_, i) => ({
     left: `${(i * 7.3 + 3) % 100}%`,
     bottom: `${(i * 11.7 + 5) % 100}%`,
@@ -34,21 +33,49 @@ function ParticleField() {
   );
 }
 
+function CharStagger({ text, loaded }: { text: string; loaded: boolean }) {
+  return (
+    <span className={`char-stagger ${loaded ? "visible" : ""}`}>
+      {text.split("").map((ch, i) => (
+        <span key={i} className={ch === " " ? "inline" : ""}>
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     setLoaded(true);
   }, []);
 
+  // Mouse spotlight effect
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
+  }, []);
+
   return (
     <section
+      ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy noise-overlay"
+      onMouseMove={handleMouseMove}
     >
       {/* ── Multi-layer background ── */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-navy-light/30" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,90,0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(36,48,68,0.5)_0%,_transparent_50%)]" />
+
+      {/* Mouse-follow spotlight */}
+      <div className="hero-spotlight" />
 
       {/* Animated gradient orb */}
       <div
@@ -152,14 +179,10 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Main heading */}
-        <h1
-          className={`mb-5 transition-all duration-1000 delay-200 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
+        {/* Main heading — character stagger animation */}
+        <h1 className="mb-5">
           <span className="block text-6xl md:text-8xl lg:text-[7rem] font-bold font-serif text-gold-gradient leading-[0.95] tracking-tight">
-            Pro &amp; Team
+            <CharStagger text="Pro & Team" loaded={loaded} />
           </span>
         </h1>
 
@@ -172,14 +195,15 @@ export default function HeroSection() {
           프로앤팀 특허사무소
         </p>
 
-        {/* Animated gold line */}
+        {/* Ornamental divider */}
         <div
-          className={`mx-auto h-px mb-8 transition-all delay-400 ${
-            loaded ? "w-32 opacity-100" : "w-0 opacity-0"
+          className={`mb-8 transition-all duration-1000 delay-400 ${
+            loaded ? "opacity-100" : "opacity-0"
           }`}
-          style={{ transitionDuration: "1500ms" }}
         >
-          <div className="h-full shimmer-gold" />
+          <div className="ornament-divider max-w-xs mx-auto">
+            <span className="text-gold/30 text-xs">◆</span>
+          </div>
         </div>
 
         {/* Tagline */}
@@ -201,7 +225,7 @@ export default function HeroSection() {
         >
           <a
             href="#contact"
-            className="btn-glow group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
+            className="rotating-border btn-glow group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
           >
             <span className="relative z-10">상담 문의</span>
             <div className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -226,8 +250,8 @@ export default function HeroSection() {
             { num: "180+", label: "해외 분쟁(건)" },
             { num: "300+", label: "계약·협상(건)" },
           ].map((s, i) => (
-            <div key={i} className="text-center group">
-              <p className="text-3xl md:text-4xl font-bold text-gold/90 font-serif group-hover:text-gold transition-colors">
+            <div key={i} className="text-center group cursor-default">
+              <p className="text-3xl md:text-4xl font-bold text-gold/90 font-serif group-hover:text-gold group-hover:scale-110 transition-all duration-300">
                 {s.num}
               </p>
               <p className="text-[10px] text-gray-500 tracking-wider mt-1.5 uppercase">

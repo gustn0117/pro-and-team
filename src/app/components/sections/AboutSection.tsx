@@ -186,31 +186,67 @@ export default function AboutSection() {
         >
           {stats.map((stat, idx) => {
             const counter = counters[idx];
+            const circumference = 2 * Math.PI * 54;
+            const progress = counter.count / stat.end;
+            const offset = circumference * (1 - progress);
             return (
               <div
                 key={idx}
                 ref={counter.ref}
                 className="card-3d"
               >
-                <div className="card-3d-inner gradient-border-animated diagonal-shimmer relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50">
+                <div className="card-3d-inner gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50">
                   {/* Top accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20" />
                   {/* Hover glow */}
                   <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-gold/[0.03] rounded-full group-hover:bg-gold/[0.08] transition-colors duration-500" />
 
-                  <div className="relative">
-                    <div className="w-10 h-10 rounded-lg bg-navy/5 flex items-center justify-center text-gold-dark/70 mb-5">
-                      {stat.icon}
+                  <div className="relative flex items-start gap-6">
+                    {/* Circular progress ring */}
+                    <div className="shrink-0 relative w-24 h-24 hidden md:flex items-center justify-center">
+                      <svg className="w-full h-full" viewBox="0 0 120 120">
+                        <circle
+                          cx="60" cy="60" r="54"
+                          fill="none"
+                          stroke="rgba(212,175,90,0.08)"
+                          strokeWidth="4"
+                        />
+                        <circle
+                          cx="60" cy="60" r="54"
+                          fill="none"
+                          stroke="url(#goldGrad)"
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                          className="progress-ring-circle"
+                          strokeDasharray={circumference}
+                          strokeDashoffset={offset}
+                        />
+                        <defs>
+                          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#e8c96e" />
+                            <stop offset="100%" stopColor="#b8963e" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center text-gold-dark/70">
+                        {stat.icon}
+                      </div>
                     </div>
-                    <div className="flex items-baseline gap-1 mb-3">
-                      <span className="text-4xl md:text-5xl font-bold text-gold tabular-nums font-serif">
-                        {counter.count}
-                      </span>
-                      <span className="text-xl font-bold text-gold-dark">{stat.suffix}</span>
-                      <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
+
+                    <div className="flex-1">
+                      <div className="w-10 h-10 rounded-lg bg-navy/5 flex items-center justify-center text-gold-dark/70 mb-4 md:hidden">
+                        {stat.icon}
+                      </div>
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span className="text-4xl md:text-5xl font-bold text-gold tabular-nums font-serif">
+                          {counter.count}
+                        </span>
+                        <span className="text-xl font-bold text-gold-dark">{stat.suffix}</span>
+                        <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
+                      </div>
+                      <p className="text-sm font-semibold text-navy mb-1">{stat.label}</p>
+                      <p className="text-xs text-gray-400">{stat.sublabel}</p>
                     </div>
-                    <p className="text-sm font-semibold text-navy mb-1">{stat.label}</p>
-                    <p className="text-xs text-gray-400">{stat.sublabel}</p>
                   </div>
                 </div>
               </div>
