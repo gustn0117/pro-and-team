@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -129,6 +129,14 @@ export default function PracticeAreasSection() {
   const header = useReveal();
   const grid = useReveal();
 
+  const handleCardMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--spotlight-x", `${x}px`);
+    e.currentTarget.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
   return (
     <section id="practice-areas" className="py-28 md:py-40 bg-white scroll-mt-20 relative overflow-hidden">
       {/* Background decorations */}
@@ -163,6 +171,8 @@ export default function PracticeAreasSection() {
           <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
             국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스
           </p>
+          {/* Gold HR accent below header */}
+          <hr className="hr-gold mt-6 max-w-sm" />
         </div>
 
         {/* Cards grid */}
@@ -175,7 +185,10 @@ export default function PracticeAreasSection() {
               key={idx}
               className="card-3d"
             >
-              <div className="card-3d-inner gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-500">
+              <div
+                className="card-3d-inner card-spotlight gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-500"
+                onMouseMove={handleCardMouse}
+              >
                 {/* Gold left accent on hover */}
                 <div className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gradient-to-b group-hover:from-gold/40 group-hover:via-gold group-hover:to-gold/40 transition-all duration-300" />
 
@@ -189,7 +202,7 @@ export default function PracticeAreasSection() {
 
                 <div className="relative p-7 md:p-8">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold/80 flex items-center justify-center group-hover:bg-navy-light group-hover:text-gold group-hover:shadow-lg group-hover:shadow-navy/20 transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold/80 flex items-center justify-center group-hover:bg-navy-light group-hover:text-gold group-hover:shadow-lg group-hover:shadow-navy/20 group-hover:scale-110 transition-all duration-300">
                       {area.icon}
                     </div>
                     <div className="pt-0.5">

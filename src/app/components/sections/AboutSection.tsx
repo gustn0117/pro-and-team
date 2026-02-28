@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 function useCountUp(end: number, duration = 2000) {
   const [count, setCount] = useState(0);
@@ -110,8 +110,20 @@ export default function AboutSection() {
   const stat2 = useCountUp(stats[2].end);
   const counters = [stat0, stat1, stat2];
 
+  /* Card spotlight mouse handler */
+  const handleCardMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--spotlight-x", `${x}px`);
+    e.currentTarget.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
   return (
-    <section id="about" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
+    <section id="about" className="py-28 md:py-40 mesh-gradient-cream scroll-mt-20 relative overflow-hidden">
+      {/* Aurora background */}
+      <div className="aurora-bg" style={{ opacity: 0.5 }} />
+
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
@@ -148,7 +160,7 @@ export default function AboutSection() {
 
         {/* Two-column intro text */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
-          <div ref={textLeft.ref} className={`reveal-left ${textLeft.visible ? "visible" : ""}`}>
+          <div ref={textLeft.ref} className={`split-reveal-left ${textLeft.visible ? "visible" : ""}`}>
             <div className="relative">
               <div className="absolute -top-8 -left-4 text-gold/10 text-[80px] font-serif leading-none select-none">
                 &ldquo;
@@ -162,7 +174,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-          <div ref={textRight.ref} className={`reveal-right ${textRight.visible ? "visible" : ""}`}>
+          <div ref={textRight.ref} className={`split-reveal-right ${textRight.visible ? "visible" : ""}`}>
             <p className="text-gray-600 text-[15px] md:text-base leading-[1.9] mb-6">
               단순한 법률 서비스를 넘어, 기업의 사업 성공에 기여하는{" "}
               <strong className="text-navy font-semibold">
@@ -178,6 +190,9 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
+
+        {/* Animated gold HR between text and stats */}
+        <hr className="hr-gold mb-20 md:mb-28 max-w-xl mx-auto" />
 
         {/* Stats cards */}
         <div
@@ -195,7 +210,10 @@ export default function AboutSection() {
                 ref={counter.ref}
                 className="card-3d"
               >
-                <div className="card-3d-inner gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50">
+                <div
+                  className="card-3d-inner card-spotlight gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50"
+                  onMouseMove={handleCardMouse}
+                >
                   {/* Top accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20" />
                   {/* Hover glow */}

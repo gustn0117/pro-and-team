@@ -1,8 +1,9 @@
 export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-gray-400 overflow-hidden noise-overlay">
-      {/* Top border gradient */}
+      {/* Top border gradient - animated */}
       <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="hr-gold" />
 
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -83,10 +84,10 @@ export default function Footer() {
             {/* Back to top */}
             <a
               href="#hero"
-              className="group inline-flex items-center gap-2.5 text-[11px] text-gray-500 hover:text-gold tracking-wider uppercase transition-colors duration-200"
+              className="btn-magnetic group inline-flex items-center gap-2.5 text-[11px] text-gray-500 hover:text-gold tracking-wider uppercase transition-colors duration-200"
             >
               <span>Back to Top</span>
-              <span className="w-8 h-8 rounded-full border border-gray-700 group-hover:border-gold/40 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-0.5">
+              <span className="w-8 h-8 rounded-full border border-gray-700 group-hover:border-gold/40 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:shadow-gold/10">
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                   <path
                     fillRule="evenodd"

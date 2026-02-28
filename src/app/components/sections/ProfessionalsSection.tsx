@@ -175,7 +175,8 @@ function ProfileCard({
                   {badges.map((b, i) => (
                     <span
                       key={i}
-                      className="text-[11px] px-4 py-2 rounded-full bg-white/[0.06] text-gold/90 border border-gold/15 backdrop-blur-sm font-medium"
+                      className="float-badge text-[11px] px-4 py-2 rounded-full bg-white/[0.08] text-gold/90 border border-gold/20 backdrop-blur-sm font-medium shadow-lg shadow-black/10"
+                      style={{ animationDelay: `${i * 0.5}s` }}
                     >
                       {b}
                     </span>
@@ -295,7 +296,10 @@ export default function ProfessionalsSection() {
   const [expandedKwon, setExpandedKwon] = useState(false);
 
   return (
-    <section id="professionals" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
+    <section id="professionals" className="py-28 md:py-40 mesh-gradient-cream scroll-mt-20 relative overflow-hidden">
+      {/* Aurora background */}
+      <div className="aurora-bg" style={{ opacity: 0.4 }} />
+
       {/* Background decorations */}
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
