@@ -65,21 +65,43 @@ export default function HeroSection() {
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-light/20" />
 
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,90,0.04)_0%,_transparent_60%)]" />
+      {/* Radial glow - enhanced visibility */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,90,0.06)_0%,_transparent_60%)]" />
+
+      {/* Pulsing secondary glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,_rgba(212,175,90,0.04)_0%,_transparent_50%)] pulse-glow" />
+
+      {/* Subtle dot pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(212,175,90,0.8) 0.5px, transparent 0.5px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
       {/* Mouse-follow spotlight */}
       <div className="hero-spotlight" />
 
-      {/* Minimal decorative lines */}
+      {/* Decorative guide lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.03] to-transparent" />
-        <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.03] to-transparent" />
-        <div className="absolute top-[50%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.02] to-transparent" />
+        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
+        <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
+        <div className="absolute top-[50%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
       </div>
 
       {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        {/* Corner ornaments */}
+        <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none">
+          <div className="absolute top-0 left-0 w-8 h-px bg-gradient-to-r from-gold/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-px h-8 bg-gradient-to-b from-gold/20 to-transparent" />
+        </div>
+        <div className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none">
+          <div className="absolute bottom-0 right-0 w-8 h-px bg-gradient-to-l from-gold/20 to-transparent" />
+          <div className="absolute bottom-0 right-0 w-px h-8 bg-gradient-to-t from-gold/20 to-transparent" />
+        </div>
+
         {/* Eyebrow */}
         <div
           className={`mb-10 transition-all duration-700 ${
@@ -113,13 +135,13 @@ export default function HeroSection() {
           프로앤팀 특허사무소
         </p>
 
-        {/* Thin divider */}
+        {/* Animated shimmer divider */}
         <div
           className={`flex justify-center mb-6 transition-all duration-700 delay-350 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          <div className="w-24 section-divider" />
         </div>
 
         {/* Typewriter */}
@@ -152,21 +174,24 @@ export default function HeroSection() {
         >
           <a
             href="#contact"
-            className="group relative px-9 py-3.5 bg-gold text-navy font-semibold text-sm tracking-wide rounded-sm hover:bg-gold-light active:scale-[0.98] transition-all duration-300"
+            className="btn-shine group relative px-9 py-3.5 bg-gold text-navy font-semibold text-sm tracking-wide rounded-sm hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 active:scale-[0.98] transition-all duration-300"
           >
             상담 문의
           </a>
           <a
             href="#practice-areas"
-            className="group px-9 py-3.5 border border-white/15 text-white/70 text-sm tracking-wide font-medium rounded-sm hover:border-white/30 hover:text-white/90 transition-all duration-300"
+            className="group px-9 py-3.5 border border-white/15 text-white/70 text-sm tracking-wide font-medium rounded-sm hover:border-white/30 hover:text-white/90 transition-all duration-300 flex items-center gap-2"
           >
             주요업무 보기
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
+              <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+            </svg>
           </a>
         </div>
 
-        {/* Stats */}
+        {/* Stats with containers */}
         <div
-          className={`flex justify-center gap-12 md:gap-20 transition-all duration-700 delay-800 ${
+          className={`flex justify-center gap-8 md:gap-16 transition-all duration-700 delay-800 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -175,11 +200,12 @@ export default function HeroSection() {
             { num: "180+", label: "해외 분쟁(건)" },
             { num: "300+", label: "계약·협상(건)" },
           ].map((s, i) => (
-            <div key={i} className="text-center">
-              <p className="text-2xl md:text-3xl font-semibold text-gold/80 font-serif">
+            <div key={i} className="text-center px-5 py-4 rounded-xl border border-white/[0.05] bg-white/[0.02]">
+              <div className="w-8 h-px bg-gradient-to-r from-gold/30 to-transparent mx-auto mb-3" />
+              <p className="text-2xl md:text-3xl font-semibold text-gold/90 font-serif">
                 {s.num}
               </p>
-              <p className="text-[10px] text-white/25 tracking-wider mt-1.5 uppercase">
+              <p className="text-[10px] text-white/30 tracking-wider mt-1.5 uppercase">
                 {s.label}
               </p>
             </div>

@@ -47,6 +47,27 @@ body {
   50% { opacity: 0; }
 }
 
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes slowPulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.07; }
+}
+
+@keyframes goldShimmerLine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* ═══════════════════════════════════════════════
    SCROLL REVEAL SYSTEM
    ═══════════════════════════════════════════════ */
@@ -59,6 +80,36 @@ body {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Staggered children - up to 12 */
@@ -140,7 +191,6 @@ body {
   box-shadow: 0 0 12px rgba(212, 175, 90, 0.4);
 }
 
-/* Tooltip label */
 .side-nav-dot .side-nav-label {
   position: absolute;
   right: 24px;
@@ -168,7 +218,6 @@ body {
    GOLD GRADIENT TEXT
    ═══════════════════════════════════════════════ */
 
-/* Animated shimmer */
 .text-gold-gradient {
   background: linear-gradient(135deg, #e8c96e 0%, #d4af5a 30%, #b8963e 70%, #d4af5a 100%);
   background-size: 200% 200%;
@@ -178,7 +227,6 @@ body {
   animation: shimmer 6s ease-in-out infinite;
 }
 
-/* Static (no shimmer) */
 .text-gold-gradient-static {
   background: linear-gradient(135deg, #e8c96e 0%, #d4af5a 40%, #b8963e 100%);
   -webkit-background-clip: text;
@@ -187,20 +235,92 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
-   GLASS CARDS
+   GLASS CARDS (ENHANCED)
    ═══════════════════════════════════════════════ */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(212, 175, 90, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--card-x, 50%) var(--card-y, 50%),
+    rgba(212, 175, 90, 0.06),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.glass-card:hover::before {
+  opacity: 1;
 }
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(212, 175, 90, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 175, 90, 0.18);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 90, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════
+   PREMIUM CARD (WHITE BG SECTIONS)
+   ═══════════════════════════════════════════════ */
+
+.premium-card {
+  position: relative;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-card:hover {
+  border-color: rgba(212, 175, 90, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(212, 175, 90, 0.04);
+  transform: translateY(-3px);
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION DIVIDER
+   ═══════════════════════════════════════════════ */
+
+.section-divider {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+}
+.section-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,90,0.1) 20%, rgba(212,175,90,0.3) 50%, rgba(212,175,90,0.1) 80%, transparent 100%);
+  background-size: 200% 100%;
+  animation: goldShimmerLine 4s ease-in-out infinite;
+}
+
+/* Ornamental diamond divider */
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.ornamental-divider::before,
+.ornamental-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 90, 0.25));
+}
+.ornamental-divider::after {
+  background: linear-gradient(90deg, rgba(212, 175, 90, 0.25), transparent);
 }
 
 /* ═══════════════════════════════════════════════
@@ -259,14 +379,58 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
+   BUTTON SHINE EFFECT
+   ═══════════════════════════════════════════════ */
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::after {
+  left: 100%;
+}
+
+/* ═══════════════════════════════════════════════
+   FLOATING DECORATIONS
+   ═══════════════════════════════════════════════ */
+
+.float-slow {
+  animation: subtleFloat 8s ease-in-out infinite;
+}
+
+.float-slow-delayed {
+  animation: subtleFloat 8s ease-in-out 4s infinite;
+}
+
+.pulse-glow {
+  animation: slowPulse 6s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger > * {
+    opacity: 1; transform: none; transition: none;
+  }
   .text-gold-gradient { animation: none; }
   .typewriter-cursor::after { animation: none; opacity: 1; }
+  .float-slow, .float-slow-delayed { animation: none; }
+  .pulse-glow { animation: none; opacity: 0.05; }
+  .section-divider::after { animation: none; }
+  .btn-shine::after { transition: none; }
 }
 
 /* Hide side nav on small screens */

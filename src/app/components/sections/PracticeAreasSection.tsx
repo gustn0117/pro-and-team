@@ -131,12 +131,15 @@ export default function PracticeAreasSection() {
 
   return (
     <section id="practice-areas" className="py-28 md:py-40 bg-white scroll-mt-20 relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
+      {/* Animated gradient background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-white via-cream/20 to-white bg-[length:200%_200%]"
+        style={{ animation: "gradientShift 20s ease infinite" }}
+      />
 
-      {/* Minimal guide lines */}
-      <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/30 to-transparent" />
-      <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/30 to-transparent" />
+      {/* Guide lines */}
+      <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
+      <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section header */}
@@ -153,6 +156,7 @@ export default function PracticeAreasSection() {
           <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
             국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스
           </p>
+          <div className="mt-6 w-16 section-divider" />
         </div>
 
         {/* Cards grid */}
@@ -163,10 +167,13 @@ export default function PracticeAreasSection() {
           {areas.map((area, idx) => (
             <div
               key={idx}
-              className="group relative bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gold/20 hover:shadow-lg hover:shadow-black/[0.03] transition-all duration-500"
+              className="group premium-card rounded-2xl overflow-hidden"
             >
               {/* Left accent on hover */}
               <div className="absolute top-0 left-0 w-0.5 h-full bg-transparent group-hover:bg-gold/40 transition-all duration-300" />
+
+              {/* Bottom accent on hover */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Card number */}
               <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
@@ -175,7 +182,7 @@ export default function PracticeAreasSection() {
 
               <div className="relative p-7 md:p-8">
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy/[0.06] text-gold-dark/70 flex items-center justify-center group-hover:bg-navy group-hover:text-gold/80 transition-all duration-300">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy/[0.06] text-gold-dark/70 flex items-center justify-center group-hover:bg-navy group-hover:text-gold/80 group-hover:shadow-lg group-hover:shadow-navy/20 transition-all duration-400">
                     {area.icon}
                   </div>
                   <div className="pt-0.5">

@@ -112,13 +112,22 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
+      {/* Enhanced background decorations */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.05)_0%,_transparent_70%)]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
 
-      {/* Minimal guide lines */}
-      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
-      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
+      {/* Grain texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: "200px 200px",
+        }}
+      />
+
+      {/* Guide lines */}
+      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
+      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
@@ -134,11 +143,11 @@ export default function AboutSection() {
           </h2>
         </div>
 
-        {/* Two-column intro text */}
+        {/* Two-column intro text with directional reveals */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
-          <div ref={textLeft.ref} className={`reveal ${textLeft.visible ? "visible" : ""}`}>
+          <div ref={textLeft.ref} className={`reveal-left ${textLeft.visible ? "visible" : ""}`}>
             <div className="relative">
-              <div className="absolute -top-8 -left-4 text-gold/10 text-[80px] font-serif leading-none select-none">
+              <div className="absolute -top-10 -left-4 text-gold/15 text-[100px] font-serif leading-none select-none">
                 &ldquo;
               </div>
               <p className="relative text-gray-600 text-[15px] md:text-base leading-[1.9]">
@@ -150,7 +159,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-          <div ref={textRight.ref} className={`reveal ${textRight.visible ? "visible" : ""}`} style={{ transitionDelay: "0.15s" }}>
+          <div ref={textRight.ref} className={`reveal-right ${textRight.visible ? "visible" : ""}`}>
             <p className="text-gray-600 text-[15px] md:text-base leading-[1.9] mb-6">
               단순한 법률 서비스를 넘어, 기업의 사업 성공에 기여하는{" "}
               <strong className="text-navy font-semibold">
@@ -167,12 +176,12 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Thin divider */}
-        <div className="flex justify-center mb-20 md:mb-28">
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        {/* Ornamental divider */}
+        <div className="ornamental-divider w-full max-w-xs mx-auto mb-20 md:mb-28">
+          <span className="text-gold/20 text-[8px]">&#9670;</span>
         </div>
 
-        {/* Stats cards */}
+        {/* Stats cards with premium styling */}
         <div
           ref={statsReveal.ref}
           className={`reveal-stagger ${statsReveal.visible ? "visible" : ""} grid md:grid-cols-3 gap-6`}
@@ -183,13 +192,12 @@ export default function AboutSection() {
               <div
                 key={idx}
                 ref={counter.ref}
-                className="group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/80 hover:border-gold/20 hover:shadow-lg hover:shadow-black/[0.03] transition-all duration-500"
+                className="group premium-card rounded-2xl p-8 md:p-10 overflow-hidden"
               >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Always-visible top gold accent, stronger on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold/15 to-transparent group-hover:via-gold/40 transition-all duration-500" />
 
                 <div className="flex items-start gap-5">
-                  {/* Icon */}
                   <div className="shrink-0 w-11 h-11 rounded-lg bg-navy/[0.04] flex items-center justify-center text-gold-dark/60">
                     {stat.icon}
                   </div>

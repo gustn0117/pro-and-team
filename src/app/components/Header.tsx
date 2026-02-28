@@ -61,7 +61,7 @@ export default function Header() {
       >
         {/* Bottom border when scrolled */}
         {scrolled && (
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
         )}
 
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -75,7 +75,8 @@ export default function Header() {
               >
                 Pro &amp; Team
               </span>
-              <span className="text-[9px] tracking-[0.3em] text-gray-400/60 uppercase font-medium">
+              <span className="text-[9px] tracking-[0.3em] text-gray-400/60 uppercase font-medium flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-gold/40" />
                 IP Law Firm
               </span>
             </div>
@@ -101,7 +102,7 @@ export default function Header() {
             })}
             <a
               href="#contact"
-              className="ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
+              className="btn-shine ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
             >
               상담 문의
             </a>
@@ -127,7 +128,9 @@ export default function Header() {
             mobileOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="mx-4 mt-3 mb-2 bg-navy-light/95 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden">
+          <nav className="mx-4 mt-3 mb-2 bg-navy-light/95 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden relative">
+            {/* Top gold accent */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
             {navItems.map((item) => {
               const isActive = activeSection === item.href.slice(1);
               return (

@@ -1,13 +1,16 @@
 export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-gray-400 overflow-hidden">
-      {/* Top border */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      {/* Top border - enhanced */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
 
-      {/* Subtle background */}
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse,_rgba(212,175,90,0.03)_0%,_transparent_70%)] pointer-events-none" />
+
+      {/* Guide lines */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-gold/[0.03] to-transparent" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-gold/[0.03] to-transparent" />
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-gold/[0.05] to-transparent" />
+        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-gold/[0.05] to-transparent" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10">

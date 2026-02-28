@@ -135,28 +135,35 @@ function ProfileCard({
 }) {
   return (
     <div ref={revealRef} className={`${revealClass} mb-12`}>
-      <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 border border-gray-100/80">
+      <div className="group/card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 border border-gray-100/80 relative">
+        {/* Left gold accent line */}
+        <div className="absolute top-0 left-0 w-[2px] h-full bg-transparent group-hover/card:bg-gradient-to-b group-hover/card:from-gold/40 group-hover/card:via-gold/20 group-hover/card:to-transparent transition-all duration-500" />
         {/* ── Header with photo ── */}
         <div className="relative bg-gradient-to-br from-navy-dark via-navy to-navy-light/30 px-8 md:px-10 py-8 md:py-10 overflow-hidden">
           {/* Subtle pattern */}
-          <div className="absolute inset-0 opacity-[0.02]" style={{
+          <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: "radial-gradient(circle, #d4af5a 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px",
           }} />
 
+          {/* Gold glow background */}
+          <div className="absolute top-0 right-0 w-[300px] h-[200px] bg-[radial-gradient(ellipse,_rgba(212,175,90,0.06)_0%,_transparent_70%)]" />
+
           {/* Top accent line */}
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
           <div className="relative flex flex-col md:flex-row md:items-center gap-6">
-            {/* Profile photo */}
-            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden border-2 border-gold/20 shadow-lg shadow-black/20">
-              <Image
-                src={photo}
-                alt={nameKo}
-                width={128}
-                height={128}
-                className="w-full h-full object-cover object-top"
-              />
+            {/* Profile photo with gradient border ring */}
+            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-2xl p-[2px] bg-gradient-to-br from-gold/40 via-gold/10 to-gold/30 shadow-lg shadow-black/20">
+              <div className="w-full h-full rounded-[14px] overflow-hidden">
+                <Image
+                  src={photo}
+                  alt={nameKo}
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
             </div>
 
             <div className="flex-1">
@@ -171,7 +178,7 @@ function ProfileCard({
                   {badges.map((b, i) => (
                     <span
                       key={i}
-                      className="text-[11px] px-4 py-2 rounded-full bg-white/[0.08] text-gold/80 border border-gold/15 font-medium"
+                      className="text-[11px] px-4 py-2 rounded-full bg-white/[0.08] text-gold/80 border border-gold/15 font-medium hover:bg-gold/15 hover:border-gold/25 transition-all duration-300"
                     >
                       {b}
                     </span>
@@ -259,6 +266,8 @@ function ProfileCard({
               expanded ? "max-h-[4000px] opacity-100 mt-8" : "max-h-0 opacity-0"
             }`}
           >
+            {/* Gold divider on expand */}
+            <div className="w-full max-w-xs mx-auto mb-8 section-divider h-px" />
             <div className="space-y-10">
               <div>
                 <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
@@ -292,13 +301,22 @@ export default function ProfessionalsSection() {
 
   return (
     <section id="professionals" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
+      {/* Enhanced background glows */}
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
 
-      {/* Minimal guide lines */}
-      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
-      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
+      {/* Dot pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(212,175,90,0.6) 0.5px, transparent 0.5px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      {/* Guide lines */}
+      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
+      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
