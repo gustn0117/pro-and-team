@@ -136,8 +136,8 @@ function ProfileCard({
 }) {
   return (
     <div ref={revealRef} className={`${revealClass} mb-12`}>
-      <div className="card-3d">
-        <div className="card-3d-inner bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100/80">
+      <div>
+        <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100/80">
           {/* ── Header with large initial ── */}
           <div className="relative bg-navy px-8 md:px-10 py-8 md:py-10 overflow-hidden">
             {/* Background pattern */}
