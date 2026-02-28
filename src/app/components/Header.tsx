@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const navItems = [
   { href: "#about", label: "사무소 소개" },
   { href: "#practice-areas", label: "주요업무" },
-  { href: "#professionals", label: "Professionals" },
+  { href: "#professionals", label: "구성원" },
   { href: "#contact", label: "연락처" },
 ];
 
@@ -59,9 +59,9 @@ export default function Header() {
             : "bg-transparent py-6"
         }`}
       >
-        {/* Subtle bottom border when scrolled */}
+        {/* Bottom border when scrolled */}
         {scrolled && (
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
         )}
 
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -75,7 +75,7 @@ export default function Header() {
               >
                 Pro &amp; Team
               </span>
-              <span className="text-[9px] tracking-[0.3em] text-gray-400/70 uppercase font-medium">
+              <span className="text-[9px] tracking-[0.3em] text-gray-400/60 uppercase font-medium">
                 IP Law Firm
               </span>
             </div>
@@ -101,13 +101,13 @@ export default function Header() {
             })}
             <a
               href="#contact"
-              className="btn-magnetic ml-4 px-5 py-2 bg-gold/10 border border-gold/25 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/20 hover:border-gold/50 hover:shadow-md hover:shadow-gold/10 transition-all duration-300"
+              className="ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
             >
               상담 문의
             </a>
           </nav>
 
-          {/* Mobile Toggle - animated hamburger */}
+          {/* Mobile Toggle */}
           <button
             className="md:hidden text-gray-300 hover:text-gold transition-colors w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5"
             onClick={() => setMobileOpen(!mobileOpen)}

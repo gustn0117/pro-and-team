@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -129,39 +129,21 @@ export default function PracticeAreasSection() {
   const header = useReveal();
   const grid = useReveal();
 
-  const handleCardMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty("--spotlight-x", `${x}px`);
-    e.currentTarget.style.setProperty("--spotlight-y", `${y}px`);
-  }, []);
-
   return (
     <section id="practice-areas" className="py-28 md:py-40 bg-white scroll-mt-20 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-20 left-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
-      <div className="absolute bottom-20 right-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
+      {/* Subtle background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
 
-      {/* Background dot pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #b8963e 0.6px, transparent 0.6px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      {/* Section number */}
-      <div className="section-number top-6 left-8 md:left-16">02</div>
+      {/* Minimal guide lines */}
+      <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/30 to-transparent" />
+      <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-gold/80 to-gold/20" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark font-medium">
+            <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
+            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/70 font-medium">
               Practice Areas
             </span>
           </div>
@@ -171,8 +153,6 @@ export default function PracticeAreasSection() {
           <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
             국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스
           </p>
-          {/* Gold HR accent below header */}
-          <hr className="hr-gold mt-6 max-w-sm" />
         </div>
 
         {/* Cards grid */}
@@ -183,63 +163,45 @@ export default function PracticeAreasSection() {
           {areas.map((area, idx) => (
             <div
               key={idx}
-              className="card-3d"
+              className="group relative bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gold/20 hover:shadow-lg hover:shadow-black/[0.03] transition-all duration-500"
             >
-              <div
-                className="card-3d-inner card-spotlight gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-500"
-                onMouseMove={handleCardMouse}
-              >
-                {/* Gold left accent on hover */}
-                <div className="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gradient-to-b group-hover:from-gold/40 group-hover:via-gold group-hover:to-gold/40 transition-all duration-300" />
+              {/* Left accent on hover */}
+              <div className="absolute top-0 left-0 w-0.5 h-full bg-transparent group-hover:bg-gold/40 transition-all duration-300" />
 
-                {/* Card number */}
-                <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
-                  {String(idx + 1).padStart(2, "0")}
-                </div>
+              {/* Card number */}
+              <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
+                {String(idx + 1).padStart(2, "0")}
+              </div>
 
-                {/* Hover glow */}
-                <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-gold/0 group-hover:bg-gold/[0.04] transition-all duration-500 blur-3xl" />
-
-                <div className="relative p-7 md:p-8">
-                  <div className="flex items-start gap-4 mb-5">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold/80 flex items-center justify-center group-hover:bg-navy-light group-hover:text-gold group-hover:shadow-lg group-hover:shadow-navy/20 group-hover:scale-110 transition-all duration-300">
-                      {area.icon}
-                    </div>
-                    <div className="pt-0.5">
-                      <h3 className="text-[15px] font-bold text-navy leading-snug">
-                        {area.title}
-                      </h3>
-                      <p className="text-[11px] text-gold-dark/70 mt-0.5 font-medium tracking-wide">
-                        {area.titleEn}
-                      </p>
-                    </div>
+              <div className="relative p-7 md:p-8">
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy/[0.06] text-gold-dark/70 flex items-center justify-center group-hover:bg-navy group-hover:text-gold/80 transition-all duration-300">
+                    {area.icon}
                   </div>
-                  <ul className="space-y-2.5 pl-16">
-                    {area.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
-                      >
-                        <span className="text-gold/40 mt-[5px] flex-shrink-0 text-[6px]">&#9670;</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="pt-0.5">
+                    <h3 className="text-[15px] font-bold text-navy leading-snug">
+                      {area.title}
+                    </h3>
+                    <p className="text-[11px] text-gray-400 mt-0.5 font-medium tracking-wide">
+                      {area.titleEn}
+                    </p>
+                  </div>
                 </div>
+                <ul className="space-y-2 pl-[60px]">
+                  {area.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
+                    >
+                      <span className="text-gold/30 mt-[5px] flex-shrink-0 text-[6px]">&#9670;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Wave divider to next section */}
-      <div className="wave-divider wave-divider--bottom">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0,30 C480,80 960,0 1440,50 L1440,80 L0,80Z"
-            fill="#f8f6f0"
-          />
-        </svg>
       </div>
     </section>
   );

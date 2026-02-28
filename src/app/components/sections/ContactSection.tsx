@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,57 +58,15 @@ export default function ContactSection() {
   const section = useReveal();
   const ctaReveal = useReveal();
 
-  const handleCardMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty("--spotlight-x", `${x}px`);
-    e.currentTarget.style.setProperty("--spotlight-y", `${y}px`);
-  }, []);
-
   return (
-    <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden noise-overlay mesh-gradient-navy">
-      {/* Aurora background */}
-      <div className="aurora-bg" />
+    <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-navy-dark via-navy to-navy-dark">
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,90,0.03)_0%,_transparent_60%)]" />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.012]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(212,175,90,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,90,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* Section number */}
-      <div
-        className="section-number bottom-6 right-8 md:right-16"
-        style={{ WebkitTextStroke: "1px rgba(212,175,90,0.05)" }}
-      >
-        04
-      </div>
-
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="morph-blob absolute -top-[15%] -right-[10%] w-[500px] h-[500px] border border-gold/[0.04]"
-          style={{ animationDuration: "25s" }}
-        />
-        <div
-          className="morph-blob absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] border border-gold/[0.03]"
-          style={{ animationDuration: "20s", animationDelay: "-8s" }}
-        />
-
-        <div className="absolute top-1/3 right-[20%] w-1 h-1">
-          <div
-            className="w-2 h-2 rounded-full bg-gold/15 blur-[2px]"
-            style={{ animation: "gradientOrbit 25s linear infinite" }}
-          />
-        </div>
-
-        <div className="absolute top-1/4 right-[10%] w-px h-48 bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
-        <div className="absolute bottom-1/4 left-[10%] w-px h-48 bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
+      {/* Minimal guide lines */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+        <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
       </div>
 
       <div
@@ -118,21 +76,22 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/60" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/80 font-medium">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/40" />
+            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/60 font-medium">
               Contact
             </span>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/60" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gold-gradient mb-6">
             연락처
           </h2>
-          <p className="text-gray-400 text-[15px] max-w-md mx-auto leading-relaxed">
+          <p className="text-gray-400/80 text-[15px] max-w-md mx-auto leading-relaxed">
             국제 IP 분쟁 대응, 특허 전략 수립, 라이선싱 협상 등
             지식재산 관련 전문 상담이 필요하시면 언제든 연락해 주세요.
           </p>
-          {/* Gold shimmer HR */}
-          <hr className="hr-gold mt-8 max-w-xs mx-auto" />
+          <div className="flex justify-center mt-8">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
+          </div>
         </div>
 
         {/* Contact cards */}
@@ -140,21 +99,15 @@ export default function ContactSection() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group glass-card card-spotlight rounded-2xl p-8 text-center hover:border-gold/20 transition-all duration-400 relative overflow-hidden"
-              onMouseMove={handleCardMouse}
+              className="group glass-card rounded-2xl p-8 text-center hover:border-gold/15 transition-all duration-400"
             >
-              {/* Diagonal shimmer on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/[0.02] to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mx-auto mb-5 group-hover:bg-gold/15 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-gold/10 transition-all duration-300">
-                  {item.icon}
-                </div>
-                <p className="text-[11px] text-gold-dark font-medium uppercase tracking-wider mb-2">
-                  {item.label}
-                </p>
-                <p className="text-gray-400 text-sm">{item.value}</p>
+              <div className="w-14 h-14 rounded-2xl bg-gold/[0.06] flex items-center justify-center text-gold/70 mx-auto mb-5 group-hover:bg-gold/10 group-hover:text-gold transition-all duration-300">
+                {item.icon}
               </div>
+              <p className="text-[11px] text-gold-dark/60 font-medium uppercase tracking-wider mb-2">
+                {item.label}
+              </p>
+              <p className="text-gray-400/70 text-sm">{item.value}</p>
             </div>
           ))}
         </div>
@@ -162,44 +115,41 @@ export default function ContactSection() {
         {/* CTA area */}
         <div
           ref={ctaReveal.ref}
-          className={`reveal-scale ${ctaReveal.visible ? "visible" : ""}`}
+          className={`reveal ${ctaReveal.visible ? "visible" : ""}`}
+          style={{ transitionDelay: "0.2s" }}
         >
-          <div className="glass-card rounded-2xl p-8 md:p-10 text-center max-w-2xl mx-auto relative overflow-hidden">
-            {/* Animated border glow */}
-            <div className="absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(135deg, transparent, rgba(212,175,90,0.05), transparent)", backgroundSize: "200% 200%", animation: "diagonalShimmer 6s ease-in-out infinite" }} />
-
-            <div className="relative">
-              <div className="ornament-divider mb-6">
-                <span className="text-gold/30 text-xs">◆</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
-                전문 상담을 원하시나요?
-              </h3>
-              <p className="text-gray-500 text-sm mb-8 leading-relaxed">
-                국제 IP 분쟁, 특허 전략, 라이선싱 등 어떤 주제든 편하게 문의해 주세요.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="#hero"
-                  className="pulse-ring rotating-border btn-magnetic btn-glow group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm overflow-hidden hover:shadow-2xl hover:shadow-gold/30 active:scale-[0.98] transition-all duration-400"
-                >
-                  <span className="relative z-10 font-serif text-base">Pro &amp; Team</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </a>
-                <a
-                  href="#hero"
-                  className="btn-magnetic group flex items-center gap-2.5 text-[12px] text-gray-400 hover:text-gold tracking-wider uppercase transition-colors duration-200"
-                >
-                  <span>Back to Top</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform">
-                    <path
-                      fillRule="evenodd"
-                      d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </div>
+          <div className="glass-card rounded-2xl p-8 md:p-10 text-center max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="flex-1 max-w-[80px] h-px bg-gradient-to-r from-transparent to-gold/20" />
+              <span className="text-gold/25 text-xs">&#9670;</span>
+              <div className="flex-1 max-w-[80px] h-px bg-gradient-to-l from-transparent to-gold/20" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
+              전문 상담을 원하시나요?
+            </h3>
+            <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+              국제 IP 분쟁, 특허 전략, 라이선싱 등 어떤 주제든 편하게 문의해 주세요.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="#hero"
+                className="group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm hover:bg-gold-light active:scale-[0.98] transition-all duration-300"
+              >
+                <span className="font-serif text-base">Pro &amp; Team</span>
+              </a>
+              <a
+                href="#hero"
+                className="group flex items-center gap-2.5 text-[12px] text-gray-400/70 hover:text-gold/80 tracking-wider uppercase transition-colors duration-200"
+              >
+                <span>Back to Top</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform">
+                  <path
+                    fillRule="evenodd"
+                    d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

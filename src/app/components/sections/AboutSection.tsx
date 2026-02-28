@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function useCountUp(end: number, duration = 2000) {
   const [count, setCount] = useState(0);
@@ -110,46 +110,22 @@ export default function AboutSection() {
   const stat2 = useCountUp(stats[2].end);
   const counters = [stat0, stat1, stat2];
 
-  /* Card spotlight mouse handler */
-  const handleCardMouse = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty("--spotlight-x", `${x}px`);
-    e.currentTarget.style.setProperty("--spotlight-y", `${y}px`);
-  }, []);
-
   return (
-    <section id="about" className="py-28 md:py-40 mesh-gradient-cream scroll-mt-20 relative overflow-hidden">
-      {/* Aurora background */}
-      <div className="aurora-bg" style={{ opacity: 0.5 }} />
+    <section id="about" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
+      {/* Subtle background decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.02)_0%,_transparent_70%)]" />
 
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.03)_0%,_transparent_70%)]" />
-
-      {/* Diagonal accent lines */}
-      <div className="absolute top-20 left-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/8 to-transparent" />
-      <div className="absolute bottom-20 right-0 w-px h-[400px] bg-gradient-to-b from-transparent via-gold/8 to-transparent" />
-
-      {/* Background pattern dots */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #d4af5a 0.8px, transparent 0.8px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-
-      {/* Large section number */}
-      <div className="section-number top-6 right-8 md:right-16">01</div>
+      {/* Minimal guide lines */}
+      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
+      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.03] to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-gold/80 to-gold/20" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark font-medium">
+            <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
+            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/70 font-medium">
               About Us
             </span>
           </div>
@@ -160,7 +136,7 @@ export default function AboutSection() {
 
         {/* Two-column intro text */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
-          <div ref={textLeft.ref} className={`split-reveal-left ${textLeft.visible ? "visible" : ""}`}>
+          <div ref={textLeft.ref} className={`reveal ${textLeft.visible ? "visible" : ""}`}>
             <div className="relative">
               <div className="absolute -top-8 -left-4 text-gold/10 text-[80px] font-serif leading-none select-none">
                 &ldquo;
@@ -174,7 +150,7 @@ export default function AboutSection() {
               </p>
             </div>
           </div>
-          <div ref={textRight.ref} className={`split-reveal-right ${textRight.visible ? "visible" : ""}`}>
+          <div ref={textRight.ref} className={`reveal ${textRight.visible ? "visible" : ""}`} style={{ transitionDelay: "0.15s" }}>
             <p className="text-gray-600 text-[15px] md:text-base leading-[1.9] mb-6">
               단순한 법률 서비스를 넘어, 기업의 사업 성공에 기여하는{" "}
               <strong className="text-navy font-semibold">
@@ -183,16 +159,18 @@ export default function AboutSection() {
               로서의 역할을 지향합니다.
             </p>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-gradient-to-r from-gold to-transparent" />
-              <span className="text-[11px] text-gold-dark/60 tracking-wider uppercase font-medium">
+              <div className="w-12 h-px bg-gradient-to-r from-gold/40 to-transparent" />
+              <span className="text-[11px] text-gold-dark/50 tracking-wider uppercase font-medium">
                 Since 2026
               </span>
             </div>
           </div>
         </div>
 
-        {/* Animated gold HR between text and stats */}
-        <hr className="hr-gold mb-20 md:mb-28 max-w-xl mx-auto" />
+        {/* Thin divider */}
+        <div className="flex justify-center mb-20 md:mb-28">
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        </div>
 
         {/* Stats cards */}
         <div
@@ -201,86 +179,37 @@ export default function AboutSection() {
         >
           {stats.map((stat, idx) => {
             const counter = counters[idx];
-            const circumference = 2 * Math.PI * 54;
-            const progress = counter.count / stat.end;
-            const offset = circumference * (1 - progress);
             return (
               <div
                 key={idx}
                 ref={counter.ref}
-                className="card-3d"
+                className="group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/80 hover:border-gold/20 hover:shadow-lg hover:shadow-black/[0.03] transition-all duration-500"
               >
-                <div
-                  className="card-3d-inner card-spotlight gradient-border-animated diagonal-shimmer group relative bg-white rounded-2xl p-8 md:p-10 overflow-hidden border border-gray-100/50"
-                  onMouseMove={handleCardMouse}
-                >
-                  {/* Top accent */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold/20 via-gold to-gold/20" />
-                  {/* Hover glow */}
-                  <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-gold/[0.03] rounded-full group-hover:bg-gold/[0.08] transition-colors duration-500" />
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  <div className="relative flex items-start gap-6">
-                    {/* Circular progress ring */}
-                    <div className="shrink-0 relative w-24 h-24 hidden md:flex items-center justify-center">
-                      <svg className="w-full h-full" viewBox="0 0 120 120">
-                        <circle
-                          cx="60" cy="60" r="54"
-                          fill="none"
-                          stroke="rgba(212,175,90,0.08)"
-                          strokeWidth="4"
-                        />
-                        <circle
-                          cx="60" cy="60" r="54"
-                          fill="none"
-                          stroke="url(#goldGrad)"
-                          strokeWidth="4"
-                          strokeLinecap="round"
-                          className="progress-ring-circle"
-                          strokeDasharray={circumference}
-                          strokeDashoffset={offset}
-                        />
-                        <defs>
-                          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#e8c96e" />
-                            <stop offset="100%" stopColor="#b8963e" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center text-gold-dark/70">
-                        {stat.icon}
-                      </div>
-                    </div>
+                <div className="flex items-start gap-5">
+                  {/* Icon */}
+                  <div className="shrink-0 w-11 h-11 rounded-lg bg-navy/[0.04] flex items-center justify-center text-gold-dark/60">
+                    {stat.icon}
+                  </div>
 
-                    <div className="flex-1">
-                      <div className="w-10 h-10 rounded-lg bg-navy/5 flex items-center justify-center text-gold-dark/70 mb-4 md:hidden">
-                        {stat.icon}
-                      </div>
-                      <div className="flex items-baseline gap-1 mb-2">
-                        <span className="text-4xl md:text-5xl font-bold text-gold tabular-nums font-serif">
-                          {counter.count}
-                        </span>
-                        <span className="text-xl font-bold text-gold-dark">{stat.suffix}</span>
-                        <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
-                      </div>
-                      <p className="text-sm font-semibold text-navy mb-1">{stat.label}</p>
-                      <p className="text-xs text-gray-400">{stat.sublabel}</p>
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-1 mb-2">
+                      <span className="text-4xl md:text-5xl font-bold text-navy tabular-nums font-serif">
+                        {counter.count}
+                      </span>
+                      <span className="text-xl font-bold text-gold-dark/70">{stat.suffix}</span>
+                      <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
                     </div>
+                    <p className="text-sm font-semibold text-navy/80 mb-1">{stat.label}</p>
+                    <p className="text-xs text-gray-400">{stat.sublabel}</p>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
-
-      {/* Wave divider to next section */}
-      <div className="wave-divider wave-divider--bottom">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80Z"
-            fill="#ffffff"
-          />
-        </svg>
       </div>
     </section>
   );
