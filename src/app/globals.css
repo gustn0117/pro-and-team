@@ -10,7 +10,7 @@
   --color-cream: #f8f6f0;
   --color-cream-dark: #ede9df;
   --font-family-sans: 'Noto Sans KR', 'Segoe UI', sans-serif;
-  --font-family-serif: 'Playfair Display', Georgia, serif;
+  --font-family-serif: 'Cormorant Garamond', Georgia, serif;
 }
 
 html {
@@ -482,7 +482,7 @@ body {
 
 .section-number {
   position: absolute;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 700;
   font-size: clamp(100px, 14vw, 220px);
   line-height: 1;

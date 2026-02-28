@@ -33,18 +33,6 @@ function ParticleField() {
   );
 }
 
-function CharStagger({ text, loaded }: { text: string; loaded: boolean }) {
-  return (
-    <span className={`char-stagger ${loaded ? "visible" : ""}`}>
-      {text.split("").map((ch, i) => (
-        <span key={i} className={ch === " " ? "inline" : ""}>
-          {ch === " " ? "\u00A0" : ch}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 function Typewriter({ texts, loaded }: { texts: string[]; loaded: boolean }) {
   const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
@@ -237,9 +225,13 @@ export default function HeroSection() {
           </span>
         </div>
 
-        <h1 className="mb-5">
+        <h1
+          className={`mb-5 transition-all duration-1000 delay-100 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="block text-6xl md:text-8xl lg:text-[7rem] font-bold font-serif text-gold-gradient leading-[0.95] tracking-tight">
-            <CharStagger text="Pro & Team" loaded={loaded} />
+            Pro &amp; Team
           </span>
         </h1>
 

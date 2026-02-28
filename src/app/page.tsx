@@ -1,5 +1,4 @@
 import HeroSection from "./components/sections/HeroSection";
-import MarqueeBand from "./components/MarqueeBand";
 import AboutSection from "./components/sections/AboutSection";
 import PracticeAreasSection from "./components/sections/PracticeAreasSection";
 import ProfessionalsSection from "./components/sections/ProfessionalsSection";
@@ -11,7 +10,6 @@ export default function Home() {
     <>
       <SideNav />
       <HeroSection />
-      <MarqueeBand />
       <AboutSection />
       <PracticeAreasSection />
       <ProfessionalsSection />
