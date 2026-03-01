@@ -100,21 +100,6 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
-   SCROLL PROGRESS BAR
-   ═══════════════════════════════════════════════ */
-
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #a6883a, #c9a84c, #a6883a);
-  z-index: 100;
-  transform-origin: left;
-  transition: none;
-}
-
-/* ═══════════════════════════════════════════════
    SIDE DOT NAVIGATION
    ═══════════════════════════════════════════════ */
 
@@ -187,13 +172,6 @@ body {
   background-clip: text;
 }
 
-.text-gold-gradient-static {
-  background: linear-gradient(135deg, #d4b865 0%, #c9a84c 40%, #a6883a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* ═══════════════════════════════════════════════
    FORMAL CARDS (LEGAL STYLE)
    ═══════════════════════════════════════════════ */
@@ -235,44 +213,6 @@ body {
 }
 .formal-card-dark:hover {
   border-color: rgba(201, 168, 76, 0.2);
-}
-
-/* ═══════════════════════════════════════════════
-   LEGAL DESIGN ELEMENTS
-   ═══════════════════════════════════════════════ */
-
-/* Double-line borders (classic legal document style) */
-.double-border-top {
-  border-top: 3px double rgba(201, 168, 76, 0.3);
-}
-.double-border-bottom {
-  border-bottom: 3px double rgba(201, 168, 76, 0.3);
-}
-
-/* Legal divider with centered ornament */
-.legal-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.legal-divider::before,
-.legal-divider::after {
-  content: '';
-  flex: 1;
-  max-width: 120px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.25));
-}
-.legal-divider::after {
-  background: linear-gradient(90deg, rgba(201, 168, 76, 0.25), transparent);
-}
-
-/* Section divider — static gold line */
-.section-divider {
-  position: relative;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.3) 70%, transparent 100%);
 }
 
 /* Small caps utility */

@@ -131,10 +131,6 @@ export default function PracticeAreasSection() {
 
   return (
     <section id="practice-areas" className="py-28 md:py-40 bg-white scroll-mt-20 relative overflow-hidden">
-      {/* Guide lines */}
-      <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
-      <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
-
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
@@ -150,7 +146,7 @@ export default function PracticeAreasSection() {
           <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
             국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스
           </p>
-          <div className="mt-6 w-20 double-border-bottom" />
+          <div className="mt-6 w-20 h-px bg-gold/20" />
         </div>
 
         {/* Cards grid */}
@@ -163,11 +159,6 @@ export default function PracticeAreasSection() {
               key={idx}
               className="group formal-card-accent rounded-md overflow-hidden"
             >
-              {/* Card number */}
-              <div className="absolute top-5 right-6 text-[11px] font-serif text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
-                {String(idx + 1).padStart(2, "0")}
-              </div>
-
               <div className="relative p-7 md:p-8">
                 <div className="flex items-start gap-4 mb-5">
                   <div className="flex-shrink-0 w-11 h-11 rounded-md bg-navy/[0.05] text-gold-dark/60 flex items-center justify-center group-hover:bg-navy/[0.08] group-hover:text-gold-dark/80 transition-colors duration-300">

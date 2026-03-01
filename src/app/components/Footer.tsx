@@ -1,21 +1,15 @@
 export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-gray-400 overflow-hidden">
-      {/* Top border — double-line legal style */}
-      <div className="double-border-top" />
-
-      {/* Guide lines */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-gold/[0.04] to-transparent" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-gold/[0.04] to-transparent" />
-      </div>
+      {/* Top border */}
+      <div className="border-t border-gold/15" />
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10">
         {/* Main 3-column grid */}
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-14">
           {/* Col 1: Branding */}
           <div>
-            <p className="text-gold-gradient-static font-bold font-serif text-xl tracking-wide mb-2">
+            <p className="text-gold-gradient font-bold font-serif text-xl tracking-wide mb-2">
               Pro &amp; Team
             </p>
             <p className="text-[10px] text-gray-500/60 tracking-[0.2em] font-serif small-caps mb-5">

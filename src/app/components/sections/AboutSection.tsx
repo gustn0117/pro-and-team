@@ -112,14 +112,6 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(201,168,76,0.04)_0%,_transparent_70%)]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(201,168,76,0.03)_0%,_transparent_70%)]" />
-
-      {/* Guide lines */}
-      <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
-      <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
-
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
@@ -138,9 +130,6 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
           <div ref={textLeft.ref} className={`reveal-left ${textLeft.visible ? "visible" : ""}`}>
             <div className="relative">
-              <div className="absolute -top-10 -left-4 text-gold/10 text-[80px] font-serif leading-none select-none">
-                &ldquo;
-              </div>
               <p className="relative text-gray-600 text-[15px] md:text-base leading-[1.9]">
                 프로앤팀 특허사무소는 국제 IP 분쟁 분야에서 합산{" "}
                 <strong className="text-navy font-semibold">52년 이상의 경력</strong>을 보유한
@@ -165,11 +154,6 @@ export default function AboutSection() {
               </span>
             </div>
           </div>
-        </div>
-
-        {/* Legal divider */}
-        <div className="legal-divider w-full max-w-xs mx-auto mb-20 md:mb-28">
-          <span className="text-gold/25 text-sm font-serif">&sect;</span>
         </div>
 
         {/* Stats cards */}

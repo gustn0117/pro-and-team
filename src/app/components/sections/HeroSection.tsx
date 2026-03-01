@@ -56,28 +56,8 @@ export default function HeroSection() {
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-light/20" />
 
-      {/* Radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.05)_0%,_transparent_60%)]" />
-
-      {/* Structural guide lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
-        <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
-        <div className="absolute top-[50%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Corner ornaments */}
-        <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none">
-          <div className="absolute top-0 left-0 w-8 h-px bg-gradient-to-r from-gold/20 to-transparent" />
-          <div className="absolute top-0 left-0 w-px h-8 bg-gradient-to-b from-gold/20 to-transparent" />
-        </div>
-        <div className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none">
-          <div className="absolute bottom-0 right-0 w-8 h-px bg-gradient-to-l from-gold/20 to-transparent" />
-          <div className="absolute bottom-0 right-0 w-px h-8 bg-gradient-to-t from-gold/20 to-transparent" />
-        </div>
-
         {/* Eyebrow */}
         <div
           className={`mb-10 transition-all duration-700 ${
@@ -110,15 +90,6 @@ export default function HeroSection() {
         >
           프로앤팀 특허사무소
         </p>
-
-        {/* Divider */}
-        <div
-          className={`flex justify-center mb-6 transition-all duration-700 delay-350 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="w-24 section-divider" />
-        </div>
 
         {/* Typewriter */}
         <div
@@ -176,7 +147,7 @@ export default function HeroSection() {
             { num: "180+", label: "해외 분쟁(건)" },
             { num: "300+", label: "계약·협상(건)" },
           ].map((s, i) => (
-            <div key={i} className="text-center px-6 py-5 rounded-none border border-white/[0.06] bg-white/[0.02] double-border-top">
+            <div key={i} className="text-center px-6 py-5 rounded-none border border-white/[0.06] bg-white/[0.02] border-t-gold/20">
               <p className="text-2xl md:text-3xl font-semibold text-gold/90 font-serif">
                 {s.num}
               </p>

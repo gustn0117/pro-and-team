@@ -48,9 +48,6 @@ export default function SideNav() {
         pointerEvents: visible ? "auto" : "none",
       }}
     >
-      {/* Thin connecting line */}
-      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
-
       {sections.map(({ id, label }) => (
         <a
           key={id}

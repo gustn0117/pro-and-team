@@ -60,15 +60,6 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-navy-dark via-navy to-navy-dark">
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.04)_0%,_transparent_60%)]" />
-
-      {/* Guide lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.04] to-transparent" />
-        <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.04] to-transparent" />
-      </div>
-
       <div
         ref={section.ref}
         className={`reveal ${section.visible ? "visible" : ""} relative z-10 max-w-5xl mx-auto px-6`}
@@ -89,9 +80,6 @@ export default function ContactSection() {
             국제 IP 분쟁 대응, 특허 전략 수립, 라이선싱 협상 등
             지식재산 관련 전문 상담이 필요하시면 언제든 연락해 주세요.
           </p>
-          <div className="flex justify-center mt-8">
-            <div className="w-24 section-divider" />
-          </div>
         </div>
 
         {/* Contact cards */}
@@ -118,12 +106,7 @@ export default function ContactSection() {
           className={`reveal ${ctaReveal.visible ? "visible" : ""}`}
           style={{ transitionDelay: "0.2s" }}
         >
-          <div className="formal-card-dark rounded-md border border-gold/15 double-border-top max-w-2xl mx-auto p-8 md:p-10 text-center">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="flex-1 max-w-[80px] h-px bg-gradient-to-r from-transparent to-gold/20" />
-              <span className="text-gold/25 text-xs font-serif">&sect;</span>
-              <div className="flex-1 max-w-[80px] h-px bg-gradient-to-l from-transparent to-gold/20" />
-            </div>
+          <div className="formal-card-dark rounded-md border-t border-gold/15 max-w-2xl mx-auto p-8 md:p-10 text-center">
             <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
               전문 상담을 원하시나요?
             </h3>

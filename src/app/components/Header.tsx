@@ -13,14 +13,9 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [scrollProgress, setScrollProgress] = useState(0);
-
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? window.scrollY / docHeight : 0;
-      setScrollProgress(Math.min(progress, 1));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -46,12 +41,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Scroll progress bar */}
-      <div
-        className="scroll-progress"
-        style={{ transform: `scaleX(${scrollProgress})` }}
-      />
-
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
@@ -64,14 +53,14 @@ export default function Header() {
           <a href="#hero" className="group flex items-center gap-3">
             <div className="flex flex-col">
               <span
-                className={`font-bold font-serif tracking-wide text-gold-gradient-static transition-all duration-300 ${
+                className={`font-bold font-serif tracking-wide text-gold-gradient transition-all duration-300 ${
                   scrolled ? "text-lg" : "text-xl"
                 }`}
               >
                 Pro &amp; Team
               </span>
               <span className="text-[9px] tracking-[0.3em] text-gray-400/60 font-serif font-medium small-caps flex items-center gap-1.5">
-                <span className="text-gold/40 text-[8px]">&sect;</span>
+                <span className="text-gold/40 text-[8px]">&middot;</span>
                 IP Law Firm
               </span>
             </div>
