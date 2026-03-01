@@ -1,30 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const sections = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "소개" },
-  { id: "practice-areas", label: "업무" },
-  { id: "professionals", label: "구성원" },
-  { id: "contact", label: "연락처" },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function SideNav() {
-  const [active, setActive] = useState("hero");
+  const { t } = useLanguage();
+  const [active, setActive] = useState("professionals");
   const [visible, setVisible] = useState(false);
+
+  const sections = [
+    { id: "professionals", label: t("구성원", "Team") },
+    { id: "practice-areas", label: t("업무", "Practice") },
+    { id: "contact", label: t("연락처", "Contact") },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      setVisible(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
+    const ids = ["professionals", "practice-areas", "contact"];
     const observers: IntersectionObserver[] = [];
-    sections.forEach(({ id }) => {
+    ids.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
       const observer = new IntersectionObserver(

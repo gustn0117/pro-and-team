@@ -1,4 +1,16 @@
+"use client";
+
+import { useLanguage } from "../contexts/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const navItems = [
+    { href: "#professionals", label: t("구성원", "Professionals") },
+    { href: "#practice-areas", label: t("주요업무", "Practice Areas") },
+    { href: "#contact", label: t("연락처", "Contact") },
+  ];
+
   return (
     <footer className="relative bg-navy-dark text-gray-400 overflow-hidden">
       {/* Top border */}
@@ -13,11 +25,13 @@ export default function Footer() {
               Pro &amp; Team
             </p>
             <p className="text-[10px] text-gray-500/60 tracking-[0.2em] font-serif small-caps mb-5">
-              IP Law Firm
+              {t("프로앤팀 특허법률사무소", "IP Law Firm")}
             </p>
             <p className="text-[13px] text-gray-500 leading-relaxed max-w-xs">
-              국제 IP 분쟁 전문 경력 52년의 노하우로,
-              기업의 글로벌 지식재산 전략을 이끕니다.
+              {t(
+                "국제 IP 분쟁 전문 경력 52년의 노하우로, 기업의 글로벌 지식재산 전략을 이끕니다.",
+                "With 52 years of expertise in international IP disputes, we lead corporate global intellectual property strategy."
+              )}
             </p>
             <div className="flex items-center gap-3 mt-5">
               <div className="w-8 h-px bg-gradient-to-r from-gold/30 to-transparent" />
@@ -33,12 +47,7 @@ export default function Footer() {
               Navigation
             </h4>
             <nav className="space-y-3.5">
-              {[
-                { href: "#about", label: "사무소 소개", en: "About Us" },
-                { href: "#practice-areas", label: "주요업무", en: "Practice Areas" },
-                { href: "#professionals", label: "구성원", en: "Professionals" },
-                { href: "#contact", label: "연락처", en: "Contact" },
-              ].map((link) => (
+              {navItems.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -46,7 +55,6 @@ export default function Footer() {
                 >
                   <span className="w-4 h-px bg-gray-700 group-hover:bg-gold/40 transition-colors duration-300" />
                   <span className="text-[13px]">{link.label}</span>
-                  <span className="text-[10px] text-gray-600 tracking-wide">{link.en}</span>
                 </a>
               ))}
             </nav>
@@ -62,23 +70,36 @@ export default function Footer() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-gold/30 shrink-0">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span>(추후 업데이트)</span>
+                <a href="tel:02-6677-3868" className="hover:text-gold/80 transition-colors">02-6677-3868</a>
               </div>
               <div className="flex items-center gap-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-gold/30 shrink-0">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
                   <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span>(추후 업데이트)</span>
+                <a href="mailto:info@proteamip.com" className="hover:text-gold/80 transition-colors">info@proteamip.com</a>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-gold/30 shrink-0 mt-0.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="12" cy="10" r="3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>
+                  {t(
+                    "서울특별시 강남구 선릉로 511, 8층 812호",
+                    "511 Seolleung-ro, Gangnam-gu, Seoul, 8F #812"
+                  )}
+                </span>
               </div>
             </div>
 
             {/* Back to top */}
             <a
-              href="#hero"
+              href="#professionals"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               className="group inline-flex items-center gap-2.5 text-[11px] text-gray-500 hover:text-gold/80 tracking-wider font-serif small-caps transition-colors duration-200"
             >
-              <span>Back to Top</span>
+              <span>{t("맨 위로", "Back to Top")}</span>
               <span className="w-8 h-8 rounded-sm border border-gray-700 group-hover:border-gold/30 flex items-center justify-center transition-colors duration-300">
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                   <path
@@ -96,10 +117,10 @@ export default function Footer() {
         <div className="border-t border-white/[0.06] mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-gray-600 tracking-wide">
-            &copy; {new Date().getFullYear()} 프로앤팀 특허사무소. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("프로앤팀 특허법률사무소", "Pro & Team IP Law Firm")}. All rights reserved.
           </p>
           <p className="text-[10px] text-gray-700 tracking-wide font-serif small-caps">
-            International IP Dispute Specialists
+            {t("국제 IP 분쟁 전문", "International IP Dispute Specialists")}
           </p>
         </div>
       </div>

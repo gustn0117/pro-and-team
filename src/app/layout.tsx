@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 export const metadata: Metadata = {
-  title: "Pro & Team IP Law Firm | 프로앤팀 특허사무소",
+  title: "Pro & Team | 프로앤팀 특허법률사무소",
   description: "국제 IP 분쟁 전문 | International IP Dispute Specialists",
 };
 
@@ -22,9 +23,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-white">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
