@@ -76,7 +76,7 @@ export default function ContactSection() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/40" />
-            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
+            <span className="text-[11px] tracking-[0.2em] text-gold font-serif font-semibold small-caps">
               Contact
             </span>
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
@@ -84,7 +84,7 @@ export default function ContactSection() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gold-gradient mb-6">
             {t("연락처", "Contact")}
           </h2>
-          <p className="text-gray-400/80 text-[15px] max-w-md mx-auto leading-relaxed">
+          <p className="text-gray-300 text-[15px] max-w-md mx-auto leading-relaxed">
             {t(
               "국제 IP 분쟁 대응, 특허 전략 수립, 라이선싱 협상 등 지식재산 관련 전문 상담이 필요하시면 언제든 연락해 주세요.",
               "For expert consultation on international IP disputes, patent strategy, licensing negotiations, and more — feel free to reach out anytime."
@@ -99,21 +99,21 @@ export default function ContactSection() {
               key={idx}
               className="group formal-card-dark rounded-md p-8 text-center"
             >
-              <div className="w-14 h-14 rounded-md bg-gold/[0.06] flex items-center justify-center text-gold/70 mx-auto mb-5 group-hover:bg-gold/[0.08] group-hover:text-gold/80 transition-colors duration-300">
+              <div className="w-14 h-14 rounded-md bg-gold/[0.10] flex items-center justify-center text-gold mx-auto mb-5 group-hover:bg-gold/[0.15] group-hover:text-gold-light transition-colors duration-300">
                 {item.icon}
               </div>
-              <p className="text-[11px] text-gold-dark/60 font-serif font-semibold tracking-wider small-caps mb-2">
+              <p className="text-[11px] text-gold/80 font-serif font-semibold tracking-wider small-caps mb-2">
                 {item.label}
               </p>
               {item.href ? (
                 <a
                   href={item.href}
-                  className="text-gray-400/70 text-sm hover:text-gold/80 transition-colors duration-200"
+                  className="text-gray-200 text-sm hover:text-gold transition-colors duration-200"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-gray-400/70 text-sm">{item.value}</p>
+                <p className="text-gray-200 text-sm">{item.value}</p>
               )}
             </div>
           ))}
@@ -129,7 +129,7 @@ export default function ContactSection() {
             <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
               {t("전문 상담을 원하시나요?", "Need Expert Consultation?")}
             </h3>
-            <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+            <p className="text-gray-300 text-sm mb-8 leading-relaxed">
               {t(
                 "국제 IP 분쟁, 특허 전략, 라이선싱 등 어떤 주제든 편하게 문의해 주세요.",
                 "Whether it's international IP disputes, patent strategy, or licensing — don't hesitate to contact us."
@@ -146,7 +146,7 @@ export default function ContactSection() {
               <a
                 href="#professionals"
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="group flex items-center gap-2.5 text-[12px] text-gray-400/70 hover:text-gold/80 tracking-wider font-serif small-caps transition-colors duration-200"
+                className="group flex items-center gap-2.5 text-[12px] text-gray-300 hover:text-gold tracking-wider font-serif small-caps transition-colors duration-200"
               >
                 <span>{t("맨 위로", "Back to Top")}</span>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">

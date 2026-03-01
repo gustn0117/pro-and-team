@@ -158,14 +158,14 @@ export default function PracticeAreasSection() {
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
-            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
+            <span className="text-[11px] tracking-[0.2em] text-gold-dark font-serif font-semibold small-caps">
               Practice Areas
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-navy mb-4">
             {t("주요업무", "Practice Areas")}
           </h2>
-          <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
+          <p className="text-sm text-gray-600 max-w-lg leading-relaxed">
             {t(
               "국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스",
               "Comprehensive services covering every stage of international IP disputes"
@@ -191,14 +191,14 @@ export default function PracticeAreasSection() {
               >
                 <div className="relative p-7 md:p-8">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-md bg-navy/[0.05] text-gold-dark/60 flex items-center justify-center group-hover:bg-navy/[0.08] group-hover:text-gold-dark/80 transition-colors duration-300">
+                    <div className="flex-shrink-0 w-11 h-11 rounded-md bg-navy/[0.07] text-gold-dark flex items-center justify-center group-hover:bg-navy/[0.10] group-hover:text-gold-dark transition-colors duration-300">
                       {area.icon}
                     </div>
                     <div className="pt-0.5">
                       <h3 className="text-[15px] font-bold text-navy leading-snug font-serif">
                         {title}
                       </h3>
-                      <p className="text-[11px] text-gray-400 mt-0.5 font-medium tracking-wide">
+                      <p className="text-[11px] text-gray-500 mt-0.5 font-medium tracking-wide">
                         {subtitle}
                       </p>
                     </div>
@@ -207,9 +207,9 @@ export default function PracticeAreasSection() {
                     {items.map((item, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
+                        className="flex items-start gap-2.5 text-[13px] text-gray-700 group-hover:text-gray-800 transition-colors"
                       >
-                        <span className="text-gold/40 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
+                        <span className="text-gold/60 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
                         {item}
                       </li>
                     ))}

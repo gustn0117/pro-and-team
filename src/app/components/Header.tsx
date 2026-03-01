@@ -62,10 +62,10 @@ export default function Header() {
             >
               Pro &amp; Team
             </span>
-            <span className={`text-[9px] text-gray-400/60 font-medium flex items-center gap-1.5 ${
+            <span className={`text-[9px] text-gray-300 font-medium flex items-center gap-1.5 ${
               lang === "en" ? "tracking-[0.2em] font-serif small-caps" : "tracking-[0.1em]"
             }`}>
-              <span className="text-gold/40 text-[8px]">&middot;</span>
+              <span className="text-gold/70 text-[8px]">&middot;</span>
               {t("프로앤팀 특허법률사무소", "IP Law Firm")}
             </span>
           </div>
@@ -82,7 +82,7 @@ export default function Header() {
                 className={`animated-underline relative text-[13px] font-medium tracking-wide px-4 py-2 transition-all duration-200 ${
                   isActive
                     ? "text-gold active"
-                    : "text-gray-400 hover:text-gold"
+                    : "text-gray-300 hover:text-gold"
                 }`}
               >
                 {item.label}
@@ -95,14 +95,14 @@ export default function Header() {
             onClick={() => setLang(lang === "ko" ? "en" : "ko")}
             className="ml-3 flex items-center gap-0 text-[11px] font-medium tracking-wider"
           >
-            <span className={lang === "ko" ? "text-gold" : "text-gray-500 hover:text-gray-300 transition-colors"}>KO</span>
-            <span className="text-gray-600 mx-1">/</span>
-            <span className={lang === "en" ? "text-gold" : "text-gray-500 hover:text-gray-300 transition-colors"}>EN</span>
+            <span className={lang === "ko" ? "text-gold" : "text-gray-400 hover:text-gray-200 transition-colors"}>KO</span>
+            <span className="text-gray-500 mx-1">/</span>
+            <span className={lang === "en" ? "text-gold" : "text-gray-400 hover:text-gray-200 transition-colors"}>EN</span>
           </button>
 
           <a
             href="#contact"
-            className="ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
+            className="ml-4 px-5 py-2 bg-gold/15 border border-gold/30 text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-gold/20 hover:border-gold/40 transition-all duration-300"
           >
             {t("상담 문의", "Consultation")}
           </a>
@@ -139,7 +139,7 @@ export default function Header() {
                 className={`flex items-center gap-3 px-6 py-4 text-sm font-medium border-b border-white/[0.03] last:border-0 transition-colors ${
                   isActive
                     ? "text-gold bg-gold/[0.06]"
-                    : "text-gray-400 hover:text-gold hover:bg-white/[0.03]"
+                    : "text-gray-300 hover:text-gold hover:bg-white/[0.05]"
                 }`}
               >
                 {isActive && (
@@ -155,11 +155,11 @@ export default function Header() {
               setLang(lang === "ko" ? "en" : "ko");
               setMobileOpen(false);
             }}
-            className="w-full flex items-center gap-3 px-6 py-4 text-sm font-medium text-gray-400 hover:text-gold transition-colors border-t border-white/[0.03]"
+            className="w-full flex items-center gap-3 px-6 py-4 text-sm font-medium text-gray-300 hover:text-gold transition-colors border-t border-white/[0.05]"
           >
             <span className="text-[11px] tracking-wider">
               <span className={lang === "ko" ? "text-gold" : ""}>KO</span>
-              <span className="text-gray-600 mx-1">/</span>
+              <span className="text-gray-500 mx-1">/</span>
               <span className={lang === "en" ? "text-gold" : ""}>EN</span>
             </span>
           </button>
