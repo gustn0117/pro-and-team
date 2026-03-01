@@ -109,7 +109,7 @@ export default function PracticeAreasSection() {
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy mb-4">
             {t("주요업무", "Practice Areas")}
           </h2>
-          <p className="text-sm text-gray-600 max-w-lg leading-relaxed">
+          <p className="text-[15px] text-gray-600 max-w-lg leading-relaxed">
             {t(
               "국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스",
               "Comprehensive services covering every stage of international IP disputes"
@@ -120,7 +120,7 @@ export default function PracticeAreasSection() {
         {/* Cards grid */}
         <div
           ref={grid.ref}
-          className={`reveal-stagger ${grid.visible ? "visible" : ""} grid md:grid-cols-2 gap-5`}
+          className={`reveal-stagger ${grid.visible ? "visible" : ""} grid md:grid-cols-2 gap-6`}
         >
           {areas.map((area, idx) => {
             const title = lang === "ko" ? area.title.ko : area.title.en;
@@ -132,18 +132,18 @@ export default function PracticeAreasSection() {
                 key={idx}
                 className="group formal-card-accent rounded-md overflow-hidden"
               >
-                <div className="p-6 md:p-7">
-                  <h3 className="text-[15px] font-bold text-navy leading-snug font-serif mb-1">
+                <div className="p-7 md:p-8">
+                  <h3 className="text-base font-bold text-navy leading-snug font-serif mb-1.5">
                     {title}
                   </h3>
-                  <p className="text-[11px] text-gray-500 mb-4 font-medium tracking-wide">
+                  <p className="text-xs text-gray-500 mb-5 font-medium tracking-wide">
                     {subtitle}
                   </p>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2.5">
                     {items.map((item, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-[13px] text-gray-700"
+                        className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed"
                       >
                         <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
                         {item}

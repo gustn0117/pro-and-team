@@ -85,27 +85,27 @@ export default function ContactSection() {
         </div>
 
         {/* Contact cards */}
-        <div className="grid md:grid-cols-3 gap-5 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group formal-card-dark rounded-md p-8 text-center"
+              className="group formal-card-dark rounded-md p-10 text-center"
             >
-              <div className="w-14 h-14 rounded-md bg-gold/[0.10] flex items-center justify-center text-gold mx-auto mb-5 group-hover:bg-gold/[0.15] group-hover:text-gold-light transition-colors duration-300">
+              <div className="w-14 h-14 rounded-md bg-gold/[0.10] flex items-center justify-center text-gold mx-auto mb-6 group-hover:bg-gold/[0.15] group-hover:text-gold-light transition-colors duration-300">
                 {item.icon}
               </div>
-              <p className="text-[11px] text-gold/80 font-serif font-semibold tracking-wider small-caps mb-2">
+              <p className="text-xs text-gold/80 font-serif font-semibold tracking-wider small-caps mb-3">
                 {item.label}
               </p>
               {item.href ? (
                 <a
                   href={item.href}
-                  className="text-gray-200 text-sm hover:text-gold transition-colors duration-200"
+                  className="text-gray-200 text-[15px] hover:text-gold transition-colors duration-200"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-gray-200 text-sm">{item.value}</p>
+                <p className="text-gray-200 text-[15px] leading-relaxed">{item.value}</p>
               )}
             </div>
           ))}

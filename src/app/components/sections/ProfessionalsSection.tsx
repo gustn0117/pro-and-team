@@ -33,11 +33,11 @@ interface Bilingual<T> { ko: T; en: T; }
 /* ────── Sub-components ────── */
 function TimelineRow({ items }: { items: TimelineItem[] }) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {items.map((t, i) => (
-        <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
+        <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
           <span className="text-xs font-serif text-gold-dark whitespace-nowrap font-semibold">{t.year}</span>
-          <span className="text-[14px] text-gray-800 leading-relaxed">{t.desc}</span>
+          <span className="text-sm text-gray-800 leading-relaxed">{t.desc}</span>
         </div>
       ))}
     </div>
@@ -46,13 +46,13 @@ function TimelineRow({ items }: { items: TimelineItem[] }) {
 
 function PracticeAreaGrid({ areas }: { areas: PracticeArea[] }) {
   return (
-    <div className="grid md:grid-cols-2 gap-4">
+    <div className="grid md:grid-cols-2 gap-5">
       {areas.map((area, i) => (
-        <div key={i} className="bg-cream/70 rounded-md p-5 border border-cream-dark/50">
-          <h5 className="font-bold text-navy mb-3 text-sm font-serif">
+        <div key={i} className="bg-cream/70 rounded-md p-6 border border-cream-dark/50">
+          <h5 className="font-bold text-navy mb-4 text-sm font-serif">
             {area.title}
           </h5>
-          <ul className="space-y-1.5 text-[13px] text-gray-700">
+          <ul className="space-y-2.5 text-sm text-gray-700">
             {area.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
                 <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
@@ -68,13 +68,13 @@ function PracticeAreaGrid({ areas }: { areas: PracticeArea[] }) {
 
 function RepMatters({ matters }: { matters: RepMatter[] }) {
   return (
-    <div className="space-y-5">
+    <div className="space-y-7">
       {matters.map((m, i) => (
         <div key={i}>
-          <h5 className="font-semibold text-navy text-sm mb-2 font-serif">
+          <h5 className="font-semibold text-navy text-sm mb-3 font-serif">
             {m.title}
           </h5>
-          <ul className="space-y-1.5 text-[13px] text-gray-700 pl-4">
+          <ul className="space-y-2.5 text-sm text-gray-700 pl-4">
             {m.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
                 <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
@@ -90,7 +90,7 @@ function RepMatters({ matters }: { matters: RepMatter[] }) {
 
 function SummaryList({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-2.5 text-[14px] text-gray-800 leading-relaxed">
+    <ul className="space-y-3.5 text-sm text-gray-800 leading-relaxed">
       {items.map((s, i) => (
         <li key={i} className="flex items-start gap-2.5">
           <span className="text-gold mt-[7px] flex-shrink-0 w-1 h-1 rounded-full bg-gold/50" />
@@ -121,8 +121,8 @@ function ProfileCard({
     <div ref={revealRef} className={`${revealClass} mb-12`}>
       <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100/80 relative">
         {/* Header with photo */}
-        <div className="relative bg-navy px-8 md:px-10 py-8 md:py-10">
-          <div className="relative flex flex-col md:flex-row md:items-center gap-6">
+        <div className="relative bg-navy px-8 md:px-12 py-8 md:py-10">
+          <div className="relative flex flex-col md:flex-row md:items-center gap-7">
             <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md overflow-hidden">
               <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover object-top" />
             </div>
@@ -136,9 +136,9 @@ function ProfileCard({
                     {lang === "ko" ? nameEn : nameKo}
                   </p>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {badges.map((b, i) => (
-                    <span key={i} className="text-[11px] px-4 py-1.5 rounded-none bg-white/[0.08] text-gold/90 border border-gold/30 font-medium font-serif">
+                    <span key={i} className="text-[12px] px-4 py-2 rounded bg-gold/15 text-gold border border-gold/25 font-medium">
                       {b}
                     </span>
                   ))}
@@ -149,26 +149,26 @@ function ProfileCard({
         </div>
 
         {/* Body */}
-        <div className="p-8 md:p-10">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-14 mb-8">
+        <div className="p-8 md:p-12">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-10">
             <div>
-              <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
+              <h4 className="text-xs font-bold text-navy/60 tracking-wider uppercase mb-5 font-serif">
                 {l.summary}
               </h4>
               <SummaryList items={summaryItems} />
             </div>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
+                <h4 className="text-xs font-bold text-navy/60 tracking-wider uppercase mb-5 font-serif">
                   {l.experience}
                 </h4>
                 <TimelineRow items={timeline} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
+                <h4 className="text-xs font-bold text-navy/60 tracking-wider uppercase mb-5 font-serif">
                   {l.education}
                 </h4>
-                <div className="space-y-2 text-[14px] text-gray-800">
+                <div className="space-y-3 text-sm text-gray-800 leading-relaxed">
                   {education.map((e, i) => <p key={i}>{e}</p>)}
                 </div>
               </div>
@@ -176,10 +176,10 @@ function ProfileCard({
           </div>
 
           {/* Qualifications */}
-          <div className="flex flex-wrap items-center gap-2 mb-8 pb-8 border-b border-gray-100">
-            <span className="text-[11px] text-gray-500 font-medium uppercase tracking-wider mr-2 font-serif">{l.qualifications}</span>
+          <div className="flex flex-wrap items-center gap-3 mb-8 pb-8 border-b border-gray-100">
+            <span className="text-xs text-gray-500 font-medium uppercase tracking-wider mr-1 font-serif">{l.qualifications}</span>
             {qualifications.map((q, i) => (
-              <span key={i} className="text-[12px] px-3.5 py-1.5 rounded-sm bg-navy text-gold font-medium font-serif">{q}</span>
+              <span key={i} className="text-[13px] px-4 py-2 rounded-sm bg-navy text-gold font-medium font-serif">{q}</span>
             ))}
           </div>
 
@@ -193,15 +193,15 @@ function ProfileCard({
 
           {/* Expanded content */}
           <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expanded ? "max-h-[4000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
-            <div className="space-y-10">
+            <div className="space-y-12">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
+                <h4 className="text-xs font-bold text-navy/60 tracking-wider uppercase mb-6 font-serif">
                   {l.practiceAreas}
                 </h4>
                 <PracticeAreaGrid areas={practiceAreas} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
+                <h4 className="text-xs font-bold text-navy/60 tracking-wider uppercase mb-6 font-serif">
                   {l.repMatters}
                 </h4>
                 <RepMatters matters={repMatters} />

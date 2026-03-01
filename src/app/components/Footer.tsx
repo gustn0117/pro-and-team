@@ -27,7 +27,7 @@ export default function Footer() {
             <p className="text-[10px] text-gray-400 tracking-[0.2em] font-serif small-caps mb-5">
               {t("프로앤팀 특허법률사무소", "IP Law Firm")}
             </p>
-            <p className="text-[13px] text-gray-400 leading-relaxed max-w-xs">
+            <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
               {t(
                 "국제 IP 분쟁 전문 경력 52년의 노하우로, 기업의 글로벌 지식재산 전략을 이끕니다.",
                 "With 52 years of expertise in international IP disputes, we lead corporate global intellectual property strategy."
@@ -40,12 +40,12 @@ export default function Footer() {
             <h4 className="text-[11px] text-gold/70 font-serif font-semibold tracking-[0.2em] small-caps mb-6">
               Navigation
             </h4>
-            <nav className="space-y-3.5">
+            <nav className="space-y-4">
               {navItems.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-[13px] text-gray-400 hover:text-gold transition-colors duration-200"
+                  className="text-sm text-gray-400 hover:text-gold transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
             <h4 className="text-[11px] text-gold/70 font-serif font-semibold tracking-[0.2em] small-caps mb-6">
               Contact Info
             </h4>
-            <div className="space-y-4 text-[13px] text-gray-400 mb-8">
+            <div className="space-y-5 text-sm text-gray-400 mb-8">
               <div className="flex items-center gap-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-gold/60 shrink-0">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round" />
