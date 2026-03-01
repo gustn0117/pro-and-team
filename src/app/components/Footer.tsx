@@ -1,16 +1,13 @@
 export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-gray-400 overflow-hidden">
-      {/* Top border - enhanced */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
-
-      {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse,_rgba(212,175,90,0.03)_0%,_transparent_70%)] pointer-events-none" />
+      {/* Top border — double-line legal style */}
+      <div className="double-border-top" />
 
       {/* Guide lines */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-gold/[0.05] to-transparent" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-gold/[0.05] to-transparent" />
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-gold/[0.04] to-transparent" />
+        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-gold/[0.04] to-transparent" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10">
@@ -21,7 +18,7 @@ export default function Footer() {
             <p className="text-gold-gradient-static font-bold font-serif text-xl tracking-wide mb-2">
               Pro &amp; Team
             </p>
-            <p className="text-[10px] text-gray-500/60 tracking-[0.2em] uppercase mb-5">
+            <p className="text-[10px] text-gray-500/60 tracking-[0.2em] font-serif small-caps mb-5">
               IP Law Firm
             </p>
             <p className="text-[13px] text-gray-500 leading-relaxed max-w-xs">
@@ -30,7 +27,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 mt-5">
               <div className="w-8 h-px bg-gradient-to-r from-gold/30 to-transparent" />
-              <span className="text-[10px] text-gold-dark/30 tracking-wider uppercase font-medium">
+              <span className="text-[10px] text-gold-dark/30 tracking-wider font-serif font-medium small-caps">
                 Since 2026
               </span>
             </div>
@@ -38,7 +35,7 @@ export default function Footer() {
 
           {/* Col 2: Navigation */}
           <div>
-            <h4 className="text-[11px] text-gold-dark/50 font-semibold tracking-[0.2em] uppercase mb-6">
+            <h4 className="text-[11px] text-gold-dark/50 font-serif font-semibold tracking-[0.2em] small-caps mb-6">
               Navigation
             </h4>
             <nav className="space-y-3.5">
@@ -53,7 +50,7 @@ export default function Footer() {
                   href={link.href}
                   className="group flex items-center gap-3 text-gray-500 hover:text-gold/80 transition-colors duration-200"
                 >
-                  <span className="w-4 h-px bg-gray-700 group-hover:bg-gold/40 group-hover:w-6 transition-all duration-300" />
+                  <span className="w-4 h-px bg-gray-700 group-hover:bg-gold/40 transition-colors duration-300" />
                   <span className="text-[13px]">{link.label}</span>
                   <span className="text-[10px] text-gray-600 tracking-wide">{link.en}</span>
                 </a>
@@ -63,7 +60,7 @@ export default function Footer() {
 
           {/* Col 3: Contact & back to top */}
           <div>
-            <h4 className="text-[11px] text-gold-dark/50 font-semibold tracking-[0.2em] uppercase mb-6">
+            <h4 className="text-[11px] text-gold-dark/50 font-serif font-semibold tracking-[0.2em] small-caps mb-6">
               Contact Info
             </h4>
             <div className="space-y-4 text-[13px] text-gray-500 mb-8">
@@ -85,10 +82,10 @@ export default function Footer() {
             {/* Back to top */}
             <a
               href="#hero"
-              className="group inline-flex items-center gap-2.5 text-[11px] text-gray-500 hover:text-gold/80 tracking-wider uppercase transition-colors duration-200"
+              className="group inline-flex items-center gap-2.5 text-[11px] text-gray-500 hover:text-gold/80 tracking-wider font-serif small-caps transition-colors duration-200"
             >
               <span>Back to Top</span>
-              <span className="w-8 h-8 rounded-full border border-gray-700 group-hover:border-gold/30 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-0.5">
+              <span className="w-8 h-8 rounded-sm border border-gray-700 group-hover:border-gold/30 flex items-center justify-center transition-colors duration-300">
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                   <path
                     fillRule="evenodd"
@@ -102,12 +99,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom divider + copyright */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent mb-6" />
+        <div className="border-t border-white/[0.06] mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-gray-600 tracking-wide">
             &copy; {new Date().getFullYear()} 프로앤팀 특허사무소. All rights reserved.
           </p>
-          <p className="text-[10px] text-gray-700 tracking-wide">
+          <p className="text-[10px] text-gray-700 tracking-wide font-serif small-caps">
             International IP Dispute Specialists
           </p>
         </div>

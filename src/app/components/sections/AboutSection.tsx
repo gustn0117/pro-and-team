@@ -112,18 +112,9 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Enhanced background decorations */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.05)_0%,_transparent_70%)]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
-
-      {/* Grain texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: "200px 200px",
-        }}
-      />
+      {/* Subtle background */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(201,168,76,0.04)_0%,_transparent_70%)]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(201,168,76,0.03)_0%,_transparent_70%)]" />
 
       {/* Guide lines */}
       <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
@@ -134,7 +125,7 @@ export default function AboutSection() {
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/70 font-medium">
+            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
               About Us
             </span>
           </div>
@@ -143,11 +134,11 @@ export default function AboutSection() {
           </h2>
         </div>
 
-        {/* Two-column intro text with directional reveals */}
+        {/* Two-column intro text */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mb-20 md:mb-28">
           <div ref={textLeft.ref} className={`reveal-left ${textLeft.visible ? "visible" : ""}`}>
             <div className="relative">
-              <div className="absolute -top-10 -left-4 text-gold/15 text-[100px] font-serif leading-none select-none">
+              <div className="absolute -top-10 -left-4 text-gold/10 text-[80px] font-serif leading-none select-none">
                 &ldquo;
               </div>
               <p className="relative text-gray-600 text-[15px] md:text-base leading-[1.9]">
@@ -169,19 +160,19 @@ export default function AboutSection() {
             </p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-px bg-gradient-to-r from-gold/40 to-transparent" />
-              <span className="text-[11px] text-gold-dark/50 tracking-wider uppercase font-medium">
+              <span className="text-[11px] text-gold-dark/50 tracking-wider font-serif font-medium small-caps">
                 Since 2026
               </span>
             </div>
           </div>
         </div>
 
-        {/* Ornamental divider */}
-        <div className="ornamental-divider w-full max-w-xs mx-auto mb-20 md:mb-28">
-          <span className="text-gold/20 text-[8px]">&#9670;</span>
+        {/* Legal divider */}
+        <div className="legal-divider w-full max-w-xs mx-auto mb-20 md:mb-28">
+          <span className="text-gold/25 text-sm font-serif">&sect;</span>
         </div>
 
-        {/* Stats cards with premium styling */}
+        {/* Stats cards */}
         <div
           ref={statsReveal.ref}
           className={`reveal-stagger ${statsReveal.visible ? "visible" : ""} grid md:grid-cols-3 gap-6`}
@@ -192,13 +183,10 @@ export default function AboutSection() {
               <div
                 key={idx}
                 ref={counter.ref}
-                className="group premium-card rounded-2xl p-8 md:p-10 overflow-hidden"
+                className="group formal-card-accent rounded-md p-8 md:p-10 overflow-hidden"
               >
-                {/* Always-visible top gold accent, stronger on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold/15 to-transparent group-hover:via-gold/40 transition-all duration-500" />
-
                 <div className="flex items-start gap-5">
-                  <div className="shrink-0 w-11 h-11 rounded-lg bg-navy/[0.04] flex items-center justify-center text-gold-dark/60">
+                  <div className="shrink-0 w-11 h-11 rounded-md bg-navy/[0.04] flex items-center justify-center text-gold-dark/60">
                     {stat.icon}
                   </div>
 
@@ -210,7 +198,7 @@ export default function AboutSection() {
                       <span className="text-xl font-bold text-gold-dark/70">{stat.suffix}</span>
                       <span className="text-sm text-gray-400 ml-1">{stat.unit}</span>
                     </div>
-                    <p className="text-sm font-semibold text-navy/80 mb-1">{stat.label}</p>
+                    <p className="text-sm font-semibold text-navy/80 mb-1 font-serif">{stat.label}</p>
                     <p className="text-xs text-gray-400">{stat.sublabel}</p>
                   </div>
                 </div>

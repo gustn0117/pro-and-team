@@ -55,15 +55,10 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-navy/[0.97] backdrop-blur-xl shadow-lg shadow-black/10 py-3"
+            ? "bg-navy border-b border-gold/10 py-3"
             : "bg-transparent py-6"
         }`}
       >
-        {/* Bottom border when scrolled */}
-        {scrolled && (
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
-        )}
-
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#hero" className="group flex items-center gap-3">
@@ -75,8 +70,8 @@ export default function Header() {
               >
                 Pro &amp; Team
               </span>
-              <span className="text-[9px] tracking-[0.3em] text-gray-400/60 uppercase font-medium flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-gold/40" />
+              <span className="text-[9px] tracking-[0.3em] text-gray-400/60 font-serif font-medium small-caps flex items-center gap-1.5">
+                <span className="text-gold/40 text-[8px]">&sect;</span>
                 IP Law Firm
               </span>
             </div>
@@ -102,7 +97,7 @@ export default function Header() {
             })}
             <a
               href="#contact"
-              className="btn-shine ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-semibold tracking-wider uppercase rounded-sm hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
+              className="ml-4 px-5 py-2 bg-gold/10 border border-gold/20 text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-gold/15 hover:border-gold/30 transition-all duration-300"
             >
               상담 문의
             </a>
@@ -110,7 +105,7 @@ export default function Header() {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden text-gray-300 hover:text-gold transition-colors w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5"
+            className="md:hidden text-gray-300 hover:text-gold transition-colors w-10 h-10 flex items-center justify-center rounded-sm hover:bg-white/5"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="메뉴"
           >
@@ -128,9 +123,7 @@ export default function Header() {
             mobileOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="mx-4 mt-3 mb-2 bg-navy-light/95 backdrop-blur-xl rounded-2xl border border-white/5 overflow-hidden relative">
-            {/* Top gold accent */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+          <nav className="mx-4 mt-3 mb-2 bg-navy-light border-t border-b border-gold/10 overflow-hidden">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.slice(1);
               return (
@@ -145,7 +138,7 @@ export default function Header() {
                   }`}
                 >
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    <span className="w-0.5 h-4 bg-gold" />
                   )}
                   {item.label}
                 </a>

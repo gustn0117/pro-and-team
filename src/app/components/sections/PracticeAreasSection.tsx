@@ -131,12 +131,6 @@ export default function PracticeAreasSection() {
 
   return (
     <section id="practice-areas" className="py-28 md:py-40 bg-white scroll-mt-20 relative overflow-hidden">
-      {/* Animated gradient background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-white via-cream/20 to-white bg-[length:200%_200%]"
-        style={{ animation: "gradientShift 20s ease infinite" }}
-      />
-
       {/* Guide lines */}
       <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
       <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-gray-200/50 to-transparent" />
@@ -146,7 +140,7 @@ export default function PracticeAreasSection() {
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/70 font-medium">
+            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
               Practice Areas
             </span>
           </div>
@@ -156,7 +150,7 @@ export default function PracticeAreasSection() {
           <p className="text-sm text-gray-400 max-w-lg leading-relaxed">
             국제 IP 분쟁의 전 과정을 아우르는 종합적 서비스
           </p>
-          <div className="mt-6 w-16 section-divider" />
+          <div className="mt-6 w-20 double-border-bottom" />
         </div>
 
         {/* Cards grid */}
@@ -167,26 +161,20 @@ export default function PracticeAreasSection() {
           {areas.map((area, idx) => (
             <div
               key={idx}
-              className="group premium-card rounded-2xl overflow-hidden"
+              className="group formal-card-accent rounded-md overflow-hidden"
             >
-              {/* Left accent on hover */}
-              <div className="absolute top-0 left-0 w-0.5 h-full bg-transparent group-hover:bg-gold/40 transition-all duration-300" />
-
-              {/* Bottom accent on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
               {/* Card number */}
-              <div className="absolute top-5 right-6 text-[11px] font-mono text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
+              <div className="absolute top-5 right-6 text-[11px] font-serif text-gray-200 group-hover:text-gold/30 transition-colors duration-300">
                 {String(idx + 1).padStart(2, "0")}
               </div>
 
               <div className="relative p-7 md:p-8">
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy/[0.06] text-gold-dark/70 flex items-center justify-center group-hover:bg-navy group-hover:text-gold/80 group-hover:shadow-lg group-hover:shadow-navy/20 transition-all duration-400">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-md bg-navy/[0.05] text-gold-dark/60 flex items-center justify-center group-hover:bg-navy/[0.08] group-hover:text-gold-dark/80 transition-colors duration-300">
                     {area.icon}
                   </div>
                   <div className="pt-0.5">
-                    <h3 className="text-[15px] font-bold text-navy leading-snug">
+                    <h3 className="text-[15px] font-bold text-navy leading-snug font-serif">
                       {area.title}
                     </h3>
                     <p className="text-[11px] text-gray-400 mt-0.5 font-medium tracking-wide">
@@ -200,7 +188,7 @@ export default function PracticeAreasSection() {
                       key={i}
                       className="flex items-start gap-2.5 text-[13px] text-gray-500 group-hover:text-gray-600 transition-colors"
                     >
-                      <span className="text-gold/30 mt-[5px] flex-shrink-0 text-[6px]">&#9670;</span>
+                      <span className="text-gold/40 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
                       {item}
                     </li>
                   ))}

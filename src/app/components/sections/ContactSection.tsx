@@ -60,13 +60,8 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-navy-dark via-navy to-navy-dark">
-      {/* Enhanced radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,90,0.05)_0%,_transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_rgba(212,175,90,0.03)_0%,_transparent_50%)]" />
-
-      {/* Floating diamond decorations */}
-      <div className="absolute top-20 left-[10%] text-gold/[0.07] text-lg float-slow pointer-events-none select-none">&#9670;</div>
-      <div className="absolute bottom-32 right-[12%] text-gold/[0.05] text-sm float-slow-delayed pointer-events-none select-none">&#9670;</div>
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.04)_0%,_transparent_60%)]" />
 
       {/* Guide lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -82,7 +77,7 @@ export default function ContactSection() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/40" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/60 font-medium">
+            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
               Contact
             </span>
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
@@ -104,12 +99,12 @@ export default function ContactSection() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group glass-card rounded-2xl p-8 text-center hover:border-gold/15 transition-all duration-400"
+              className="group formal-card-dark rounded-md p-8 text-center"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gold/[0.06] flex items-center justify-center text-gold/70 mx-auto mb-5 group-hover:bg-gold/10 group-hover:text-gold transition-all duration-300">
+              <div className="w-14 h-14 rounded-md bg-gold/[0.06] flex items-center justify-center text-gold/70 mx-auto mb-5 group-hover:bg-gold/[0.08] group-hover:text-gold/80 transition-colors duration-300">
                 {item.icon}
               </div>
-              <p className="text-[11px] text-gold-dark/60 font-medium uppercase tracking-wider mb-2">
+              <p className="text-[11px] text-gold-dark/60 font-serif font-semibold tracking-wider small-caps mb-2">
                 {item.label}
               </p>
               <p className="text-gray-400/70 text-sm">{item.value}</p>
@@ -123,11 +118,10 @@ export default function ContactSection() {
           className={`reveal ${ctaReveal.visible ? "visible" : ""}`}
           style={{ transitionDelay: "0.2s" }}
         >
-          <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-gold/20 via-transparent to-gold/10 max-w-2xl mx-auto">
-          <div className="glass-card rounded-2xl p-8 md:p-10 text-center">
+          <div className="formal-card-dark rounded-md border border-gold/15 double-border-top max-w-2xl mx-auto p-8 md:p-10 text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className="flex-1 max-w-[80px] h-px bg-gradient-to-r from-transparent to-gold/20" />
-              <span className="text-gold/25 text-xs">&#9670;</span>
+              <span className="text-gold/25 text-xs font-serif">&sect;</span>
               <div className="flex-1 max-w-[80px] h-px bg-gradient-to-l from-transparent to-gold/20" />
             </div>
             <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
@@ -139,16 +133,16 @@ export default function ContactSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#hero"
-                className="btn-shine group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-sm hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 active:scale-[0.98] transition-all duration-300"
+                className="group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-none border border-gold-dark/20 hover:bg-gold-light transition-colors duration-300"
               >
                 <span className="font-serif text-base">Pro &amp; Team</span>
               </a>
               <a
                 href="#hero"
-                className="group flex items-center gap-2.5 text-[12px] text-gray-400/70 hover:text-gold/80 tracking-wider uppercase transition-colors duration-200"
+                className="group flex items-center gap-2.5 text-[12px] text-gray-400/70 hover:text-gold/80 tracking-wider font-serif small-caps transition-colors duration-200"
               >
                 <span>Back to Top</span>
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path
                     fillRule="evenodd"
                     d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
@@ -157,7 +151,6 @@ export default function ContactSection() {
                 </svg>
               </a>
             </div>
-          </div>
           </div>
         </div>
       </div>

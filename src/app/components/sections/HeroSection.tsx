@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 function Typewriter({ texts, loaded }: { texts: string[]; loaded: boolean }) {
   const [index, setIndex] = useState(0);
@@ -48,42 +48,18 @@ export default function HeroSection() {
     setLoaded(true);
   }, []);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
-    e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
-  }, []);
-
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy"
-      onMouseMove={handleMouseMove}
     >
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-light/20" />
 
-      {/* Radial glow - enhanced visibility */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,90,0.06)_0%,_transparent_60%)]" />
+      {/* Radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.05)_0%,_transparent_60%)]" />
 
-      {/* Pulsing secondary glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,_rgba(212,175,90,0.04)_0%,_transparent_50%)] pulse-glow" />
-
-      {/* Subtle dot pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.015]"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(212,175,90,0.8) 0.5px, transparent 0.5px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-
-      {/* Mouse-follow spotlight */}
-      <div className="hero-spotlight" />
-
-      {/* Decorative guide lines */}
+      {/* Structural guide lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
         <div className="absolute top-0 left-[75%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.05] to-transparent" />
@@ -108,7 +84,7 @@ export default function HeroSection() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="inline-flex items-center gap-3 text-[10px] tracking-[0.4em] uppercase text-gold/50 font-medium">
+          <span className="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] text-gold/50 font-serif font-semibold small-caps">
             <span className="w-8 h-px bg-gold/30" />
             International IP Law Firm
             <span className="w-8 h-px bg-gold/30" />
@@ -121,21 +97,21 @@ export default function HeroSection() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="block text-6xl md:text-8xl lg:text-[6.5rem] font-bold font-serif text-gold-gradient leading-[1] tracking-tight">
+          <span className="block text-6xl md:text-8xl lg:text-[7rem] font-bold font-serif text-gold-gradient leading-[1] tracking-[-0.02em]">
             Pro &amp; Team
           </span>
         </h1>
 
         {/* Korean name */}
         <p
-          className={`text-lg md:text-xl text-white/60 font-light tracking-[0.2em] mb-6 transition-all duration-700 delay-300 ${
+          className={`text-lg md:text-xl text-white/50 font-serif font-normal tracking-[0.15em] mb-6 transition-all duration-700 delay-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         >
           프로앤팀 특허사무소
         </p>
 
-        {/* Animated shimmer divider */}
+        {/* Divider */}
         <div
           className={`flex justify-center mb-6 transition-all duration-700 delay-350 ${
             loaded ? "opacity-100" : "opacity-0"
@@ -174,13 +150,13 @@ export default function HeroSection() {
         >
           <a
             href="#contact"
-            className="btn-shine group relative px-9 py-3.5 bg-gold text-navy font-semibold text-sm tracking-wide rounded-sm hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 active:scale-[0.98] transition-all duration-300"
+            className="group relative px-10 py-3.5 bg-gold text-navy font-semibold text-sm tracking-wider rounded-none border border-gold-dark/20 hover:bg-gold-light transition-colors duration-300"
           >
             상담 문의
           </a>
           <a
             href="#practice-areas"
-            className="group px-9 py-3.5 border border-white/15 text-white/70 text-sm tracking-wide font-medium rounded-sm hover:border-white/30 hover:text-white/90 transition-all duration-300 flex items-center gap-2"
+            className="group px-10 py-3.5 border border-white/15 text-white/70 text-sm tracking-wider font-medium rounded-none hover:border-white/30 hover:text-white/90 transition-colors duration-300 flex items-center gap-2"
           >
             주요업무 보기
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
@@ -189,7 +165,7 @@ export default function HeroSection() {
           </a>
         </div>
 
-        {/* Stats with containers */}
+        {/* Stats */}
         <div
           className={`flex justify-center gap-8 md:gap-16 transition-all duration-700 delay-800 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -200,12 +176,11 @@ export default function HeroSection() {
             { num: "180+", label: "해외 분쟁(건)" },
             { num: "300+", label: "계약·협상(건)" },
           ].map((s, i) => (
-            <div key={i} className="text-center px-5 py-4 rounded-xl border border-white/[0.05] bg-white/[0.02]">
-              <div className="w-8 h-px bg-gradient-to-r from-gold/30 to-transparent mx-auto mb-3" />
+            <div key={i} className="text-center px-6 py-5 rounded-none border border-white/[0.06] bg-white/[0.02] double-border-top">
               <p className="text-2xl md:text-3xl font-semibold text-gold/90 font-serif">
                 {s.num}
               </p>
-              <p className="text-[10px] text-white/30 tracking-wider mt-1.5 uppercase">
+              <p className="text-[10px] text-white/30 tracking-wider mt-1.5 uppercase font-serif small-caps">
                 {s.label}
               </p>
             </div>
@@ -221,7 +196,7 @@ export default function HeroSection() {
         }`}
         style={{ transitionDelay: "1200ms", transitionDuration: "700ms" }}
       >
-        <span className="text-[9px] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-[9px] tracking-[0.3em] uppercase font-serif">Scroll</span>
         <div className="w-5 h-8 rounded-full border border-current/40 flex justify-center pt-1.5">
           <div className="w-0.5 h-2 bg-current rounded-full" style={{ animation: "bounceDown 2s ease-in-out infinite" }} />
         </div>

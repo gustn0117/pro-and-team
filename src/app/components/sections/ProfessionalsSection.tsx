@@ -46,7 +46,7 @@ function TimelineRow({ items }: { items: TimelineItem[] }) {
         <div key={i} className="relative flex items-start gap-4">
           <div className="absolute -left-6 top-[7px] w-[11px] h-[11px] rounded-full border-2 border-gold/40 bg-white" />
           <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-            <span className="text-xs font-mono text-gold-dark/70 whitespace-nowrap font-medium">{t.year}</span>
+            <span className="text-xs font-serif text-gold-dark/70 whitespace-nowrap font-medium">{t.year}</span>
             <span className="text-[14px] text-gray-700 leading-relaxed">{t.desc}</span>
           </div>
         </div>
@@ -59,15 +59,15 @@ function PracticeAreaGrid({ areas }: { areas: PracticeArea[] }) {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       {areas.map((area, i) => (
-        <div key={i} className="bg-cream/70 rounded-xl p-5 border border-cream-dark/50 hover:border-gold/20 hover:shadow-sm transition-all duration-300">
-          <h5 className="font-bold text-navy mb-3 text-sm flex items-center gap-2">
-            <div className="w-1 h-4 bg-gold/40 rounded-full" />
+        <div key={i} className="bg-cream/70 rounded-md p-5 border border-cream-dark/50 hover:border-gold/20 transition-colors duration-300">
+          <h5 className="font-bold text-navy mb-3 text-sm font-serif flex items-center gap-2">
+            <div className="w-0.5 h-4 bg-gold/40" />
             {area.title}
           </h5>
           <ul className="space-y-1.5 text-[13px] text-gray-600 pl-3">
             {area.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
-                <span className="text-gold/30 mt-[5px] text-[6px]">&#9679;</span>
+                <span className="text-gold/40 mt-[3px] text-[10px] font-serif">&mdash;</span>
                 {item}
               </li>
             ))}
@@ -83,14 +83,14 @@ function RepMatters({ matters }: { matters: RepMatter[] }) {
     <div className="space-y-5">
       {matters.map((m, i) => (
         <div key={i}>
-          <h5 className="font-semibold text-navy text-sm mb-2 flex items-center gap-2">
-            <div className="w-1 h-3.5 bg-gold/30 rounded-full" />
+          <h5 className="font-semibold text-navy text-sm mb-2 font-serif flex items-center gap-2">
+            <div className="w-0.5 h-3.5 bg-gold/30" />
             {m.title}
           </h5>
           <ul className="space-y-1.5 text-[13px] text-gray-600 pl-6">
             {m.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
-                <span className="text-gold/20 mt-[5px] text-[6px]">&#9670;</span>
+                <span className="text-gold/30 mt-[3px] text-[10px] font-serif">&mdash;</span>
                 {item}
               </li>
             ))}
@@ -135,27 +135,25 @@ function ProfileCard({
 }) {
   return (
     <div ref={revealRef} className={`${revealClass} mb-12`}>
-      <div className="group/card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 border border-gray-100/80 relative">
-        {/* Left gold accent line */}
-        <div className="absolute top-0 left-0 w-[2px] h-full bg-transparent group-hover/card:bg-gradient-to-b group-hover/card:from-gold/40 group-hover/card:via-gold/20 group-hover/card:to-transparent transition-all duration-500" />
+      <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100/80 relative">
+        {/* Left gold accent — always visible legal margin line */}
+        <div className="absolute top-0 left-0 w-[3px] h-full bg-gold/30" />
+
         {/* ── Header with photo ── */}
         <div className="relative bg-gradient-to-br from-navy-dark via-navy to-navy-light/30 px-8 md:px-10 py-8 md:py-10 overflow-hidden">
           {/* Subtle pattern */}
           <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: "radial-gradient(circle, #d4af5a 0.5px, transparent 0.5px)",
+            backgroundImage: "radial-gradient(circle, #c9a84c 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px",
           }} />
-
-          {/* Gold glow background */}
-          <div className="absolute top-0 right-0 w-[300px] h-[200px] bg-[radial-gradient(ellipse,_rgba(212,175,90,0.06)_0%,_transparent_70%)]" />
 
           {/* Top accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
           <div className="relative flex flex-col md:flex-row md:items-center gap-6">
-            {/* Profile photo with gradient border ring */}
-            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-2xl p-[2px] bg-gradient-to-br from-gold/40 via-gold/10 to-gold/30 shadow-lg shadow-black/20">
-              <div className="w-full h-full rounded-[14px] overflow-hidden">
+            {/* Profile photo */}
+            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md p-[2px] bg-gradient-to-b from-gold/30 to-gold/15 shadow-md shadow-black/15">
+              <div className="w-full h-full rounded-[5px] overflow-hidden">
                 <Image
                   src={photo}
                   alt={nameKo}
@@ -178,7 +176,7 @@ function ProfileCard({
                   {badges.map((b, i) => (
                     <span
                       key={i}
-                      className="text-[11px] px-4 py-2 rounded-full bg-white/[0.08] text-gold/80 border border-gold/15 font-medium hover:bg-gold/15 hover:border-gold/25 transition-all duration-300"
+                      className="text-[11px] px-4 py-1.5 rounded-none bg-white/[0.06] text-gold/70 border border-gold/20 font-medium font-serif"
                     >
                       {b}
                     </span>
@@ -194,7 +192,7 @@ function ProfileCard({
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 mb-8">
             {/* Left: Summary */}
             <div>
-              <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
+              <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
                 <div className="w-4 h-px bg-gold/30" />
                 Professional Summary
               </h4>
@@ -204,14 +202,14 @@ function ProfileCard({
             {/* Right: Experience + Education */}
             <div className="space-y-8">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
+                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
                   <div className="w-4 h-px bg-gold/30" />
                   경력 | Experience
                 </h4>
                 <TimelineRow items={timeline} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
+                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
                   <div className="w-4 h-px bg-gold/30" />
                   학력 | Education
                 </h4>
@@ -226,13 +224,13 @@ function ProfileCard({
 
           {/* Qualifications */}
           <div className="flex flex-wrap items-center gap-2 mb-8 pb-8 border-b border-gray-100">
-            <span className="text-[11px] text-gray-400 font-medium uppercase tracking-wider mr-2">
+            <span className="text-[11px] text-gray-400 font-medium uppercase tracking-wider mr-2 font-serif">
               자격
             </span>
             {qualifications.map((q, i) => (
               <span
                 key={i}
-                className="text-[12px] px-3.5 py-1.5 rounded-lg bg-navy text-gold/80 font-medium"
+                className="text-[12px] px-3.5 py-1.5 rounded-sm bg-navy text-gold/70 font-medium font-serif"
               >
                 {q}
               </span>
@@ -244,7 +242,7 @@ function ProfileCard({
             onClick={onToggle}
             className="group flex items-center gap-2.5 text-sm text-gold-dark hover:text-gold font-medium transition-colors"
           >
-            <span className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
+            <span className="w-8 h-8 rounded-sm bg-gold/10 flex items-center justify-center group-hover:bg-gold/15 transition-colors duration-300">
               <svg
                 className={`w-4 h-4 text-gold transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
                 viewBox="0 0 20 20"
@@ -257,7 +255,7 @@ function ProfileCard({
                 />
               </svg>
             </span>
-            <span>{expanded ? "접기" : "전문 분야 및 대표 수행 업무 보기"}</span>
+            <span className="font-serif">{expanded ? "접기" : "전문 분야 및 대표 수행 업무 보기"}</span>
           </button>
 
           {/* Expanded content */}
@@ -266,18 +264,18 @@ function ProfileCard({
               expanded ? "max-h-[4000px] opacity-100 mt-8" : "max-h-0 opacity-0"
             }`}
           >
-            {/* Gold divider on expand */}
+            {/* Divider on expand */}
             <div className="w-full max-w-xs mx-auto mb-8 section-divider h-px" />
             <div className="space-y-10">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
+                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
                   <div className="w-4 h-px bg-gold/30" />
                   전문 분야 | Practice Areas
                 </h4>
                 <PracticeAreaGrid areas={practiceAreas} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2">
+                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
                   <div className="w-4 h-px bg-gold/30" />
                   대표 수행 업무 | Representative Matters
                 </h4>
@@ -301,18 +299,9 @@ export default function ProfessionalsSection() {
 
   return (
     <section id="professionals" className="py-28 md:py-40 bg-cream scroll-mt-20 relative overflow-hidden">
-      {/* Enhanced background glows */}
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(212,175,90,0.04)_0%,_transparent_70%)]" />
-
-      {/* Dot pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(212,175,90,0.6) 0.5px, transparent 0.5px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+      {/* Subtle background */}
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(201,168,76,0.03)_0%,_transparent_70%)]" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_rgba(201,168,76,0.03)_0%,_transparent_70%)]" />
 
       {/* Guide lines */}
       <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-navy/[0.04] to-transparent" />
@@ -323,7 +312,7 @@ export default function ProfessionalsSection() {
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
-            <span className="text-[11px] tracking-[0.3em] uppercase text-gold-dark/70 font-medium">
+            <span className="text-[11px] tracking-[0.2em] text-gold-dark/70 font-serif font-semibold small-caps">
               Professionals
             </span>
           </div>
@@ -349,7 +338,7 @@ export default function ProfessionalsSection() {
                 "배터리·신재생에너지·바이오·반도체·전기전자 첨단기술 분야 특화",
               ].map((s, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <span className="text-gold/50 mt-[5px] flex-shrink-0 text-[6px]">&#9679;</span>
+                  <span className="text-gold/40 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
                   {s}
                 </li>
               ))}
@@ -448,7 +437,7 @@ export default function ProfessionalsSection() {
                 "100+ 특허 강연 (경영진·연구원·IP팀·구매팀·영업팀 대상)",
               ].map((s, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <span className="text-gold/50 mt-[5px] flex-shrink-0 text-[6px]">&#9679;</span>
+                  <span className="text-gold/40 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
                   {s}
                 </li>
               ))}
