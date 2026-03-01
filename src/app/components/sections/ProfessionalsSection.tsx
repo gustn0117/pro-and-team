@@ -33,15 +33,11 @@ interface Bilingual<T> { ko: T; en: T; }
 /* ────── Sub-components ────── */
 function TimelineRow({ items }: { items: TimelineItem[] }) {
   return (
-    <div className="relative pl-6 space-y-4">
-      <div className="absolute top-1 left-[5px] bottom-1 w-px bg-gradient-to-b from-gold/50 via-gold/25 to-transparent" />
+    <div className="space-y-3">
       {items.map((t, i) => (
-        <div key={i} className="relative flex items-start gap-4">
-          <div className="absolute -left-6 top-[7px] w-[11px] h-[11px] rounded-full border-2 border-gold/60 bg-white" />
-          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-            <span className="text-xs font-serif text-gold-dark whitespace-nowrap font-semibold">{t.year}</span>
-            <span className="text-[14px] text-gray-800 leading-relaxed">{t.desc}</span>
-          </div>
+        <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
+          <span className="text-xs font-serif text-gold-dark whitespace-nowrap font-semibold">{t.year}</span>
+          <span className="text-[14px] text-gray-800 leading-relaxed">{t.desc}</span>
         </div>
       ))}
     </div>
@@ -52,15 +48,14 @@ function PracticeAreaGrid({ areas }: { areas: PracticeArea[] }) {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       {areas.map((area, i) => (
-        <div key={i} className="bg-cream/70 rounded-md p-5 border border-cream-dark/50 hover:border-gold/20 transition-colors duration-300">
-          <h5 className="font-bold text-navy mb-3 text-sm font-serif flex items-center gap-2">
-            <div className="w-0.5 h-4 bg-gold/60" />
+        <div key={i} className="bg-cream/70 rounded-md p-5 border border-cream-dark/50">
+          <h5 className="font-bold text-navy mb-3 text-sm font-serif">
             {area.title}
           </h5>
-          <ul className="space-y-1.5 text-[13px] text-gray-700 pl-3">
+          <ul className="space-y-1.5 text-[13px] text-gray-700">
             {area.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
-                <span className="text-gold/60 mt-[3px] text-[10px] font-serif">&mdash;</span>
+                <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
                 {item}
               </li>
             ))}
@@ -76,14 +71,13 @@ function RepMatters({ matters }: { matters: RepMatter[] }) {
     <div className="space-y-5">
       {matters.map((m, i) => (
         <div key={i}>
-          <h5 className="font-semibold text-navy text-sm mb-2 font-serif flex items-center gap-2">
-            <div className="w-0.5 h-3.5 bg-gold/50" />
+          <h5 className="font-semibold text-navy text-sm mb-2 font-serif">
             {m.title}
           </h5>
-          <ul className="space-y-1.5 text-[13px] text-gray-600 pl-6">
+          <ul className="space-y-1.5 text-[13px] text-gray-700 pl-4">
             {m.items.map((item, j) => (
               <li key={j} className="flex items-start gap-2">
-                <span className="text-gold/60 mt-[3px] text-[10px] font-serif">&mdash;</span>
+                <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
                 {item}
               </li>
             ))}
@@ -96,10 +90,10 @@ function RepMatters({ matters }: { matters: RepMatter[] }) {
 
 function SummaryList({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-3 text-[14px] text-gray-800 leading-relaxed">
+    <ul className="space-y-2.5 text-[14px] text-gray-800 leading-relaxed">
       {items.map((s, i) => (
         <li key={i} className="flex items-start gap-2.5">
-          <span className="text-gold/60 mt-[3px] flex-shrink-0 text-[10px] font-serif">&mdash;</span>
+          <span className="text-gold mt-[7px] flex-shrink-0 w-1 h-1 rounded-full bg-gold/50" />
           {s}
         </li>
       ))}
@@ -126,15 +120,11 @@ function ProfileCard({
   return (
     <div ref={revealRef} className={`${revealClass} mb-12`}>
       <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100/80 relative">
-        <div className="absolute top-0 left-0 w-[3px] h-full bg-gold/50" />
-
         {/* Header with photo */}
-        <div className="relative bg-gradient-to-br from-navy-dark via-navy to-navy-light/30 px-8 md:px-10 py-8 md:py-10 overflow-hidden">
+        <div className="relative bg-navy px-8 md:px-10 py-8 md:py-10">
           <div className="relative flex flex-col md:flex-row md:items-center gap-6">
-            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md p-[2px] bg-gradient-to-b from-gold/30 to-gold/15 shadow-md shadow-black/15">
-              <div className="w-full h-full rounded-[5px] overflow-hidden">
-                <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover object-top" />
-              </div>
+            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md overflow-hidden">
+              <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover object-top" />
             </div>
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -162,23 +152,20 @@ function ProfileCard({
         <div className="p-8 md:p-10">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 mb-8">
             <div>
-              <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
-                <div className="w-4 h-px bg-gold/50" />
+              <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
                 {l.summary}
               </h4>
               <SummaryList items={summaryItems} />
             </div>
             <div className="space-y-8">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
-                  <div className="w-4 h-px bg-gold/30" />
+                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
                   {l.experience}
                 </h4>
                 <TimelineRow items={timeline} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
-                  <div className="w-4 h-px bg-gold/30" />
+                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
                   {l.education}
                 </h4>
                 <div className="space-y-2 text-[14px] text-gray-800">
@@ -197,29 +184,24 @@ function ProfileCard({
           </div>
 
           {/* Toggle */}
-          <button onClick={onToggle} className="group flex items-center gap-2.5 text-sm text-gold-dark hover:text-gold font-medium transition-colors">
-            <span className="w-8 h-8 rounded-sm bg-gold/10 flex items-center justify-center group-hover:bg-gold/15 transition-colors duration-300">
-              <svg className={`w-4 h-4 text-gold transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-              </svg>
-            </span>
-            <span className="font-serif">{expanded ? l.collapse : l.expand}</span>
+          <button onClick={onToggle} className="group flex items-center gap-2 text-sm text-gold-dark hover:text-gold font-medium transition-colors">
+            <svg className={`w-4 h-4 text-gold transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+            </svg>
+            <span>{expanded ? l.collapse : l.expand}</span>
           </button>
 
           {/* Expanded content */}
           <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expanded ? "max-h-[4000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
-            <div className="w-full max-w-xs mx-auto mb-8 h-px bg-gold/15" />
             <div className="space-y-10">
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
-                  <div className="w-4 h-px bg-gold/30" />
+                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
                   {l.practiceAreas}
                 </h4>
                 <PracticeAreaGrid areas={practiceAreas} />
               </div>
               <div>
-                <h4 className="text-[11px] font-bold text-navy/40 tracking-wider uppercase mb-5 flex items-center gap-2 font-serif">
-                  <div className="w-4 h-px bg-gold/30" />
+                <h4 className="text-[11px] font-bold text-navy/60 tracking-wider uppercase mb-4 font-serif">
                   {l.repMatters}
                 </h4>
                 <RepMatters matters={repMatters} />
@@ -393,13 +375,7 @@ export default function ProfessionalsSection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-gold/10" />
-            <span className="text-[11px] tracking-[0.2em] text-gold-dark font-serif font-semibold small-caps">
-              Professionals
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-navy">
+          <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy">
             {t("구성원", "Our Team")}
           </h2>
         </div>

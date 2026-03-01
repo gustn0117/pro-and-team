@@ -33,12 +33,6 @@ export default function Footer() {
                 "With 52 years of expertise in international IP disputes, we lead corporate global intellectual property strategy."
               )}
             </p>
-            <div className="flex items-center gap-3 mt-5">
-              <div className="w-8 h-px bg-gradient-to-r from-gold/30 to-transparent" />
-              <span className="text-[10px] text-gold-dark/60 tracking-wider font-serif font-medium small-caps">
-                Since 2026
-              </span>
-            </div>
           </div>
 
           {/* Col 2: Navigation */}
@@ -51,10 +45,9 @@ export default function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="group flex items-center gap-3 text-gray-400 hover:text-gold transition-colors duration-200"
+                  className="text-[13px] text-gray-400 hover:text-gold transition-colors duration-200"
                 >
-                  <span className="w-4 h-px bg-gray-700 group-hover:bg-gold/40 transition-colors duration-300" />
-                  <span className="text-[13px]">{link.label}</span>
+                  {link.label}
                 </a>
               ))}
             </nav>

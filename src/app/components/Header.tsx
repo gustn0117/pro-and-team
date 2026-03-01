@@ -62,10 +62,9 @@ export default function Header() {
             >
               Pro &amp; Team
             </span>
-            <span className={`text-[9px] text-gray-300 font-medium flex items-center gap-1.5 ${
-              lang === "en" ? "tracking-[0.2em] font-serif small-caps" : "tracking-[0.1em]"
+            <span className={`text-[9px] text-gray-400 font-medium ${
+              lang === "en" ? "tracking-[0.2em] font-serif" : "tracking-[0.08em]"
             }`}>
-              <span className="text-gold/70 text-[8px]">&middot;</span>
               {t("프로앤팀 특허법률사무소", "IP Law Firm")}
             </span>
           </div>

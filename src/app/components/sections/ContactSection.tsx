@@ -26,7 +26,6 @@ function useReveal() {
 export default function ContactSection() {
   const { t } = useLanguage();
   const section = useReveal();
-  const ctaReveal = useReveal();
 
   const contactItems = [
     {
@@ -74,14 +73,7 @@ export default function ContactSection() {
       >
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/40" />
-            <span className="text-[11px] tracking-[0.2em] text-gold font-serif font-semibold small-caps">
-              Contact
-            </span>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gold-gradient mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold font-serif text-gold-gradient mb-6">
             {t("연락처", "Contact")}
           </h2>
           <p className="text-gray-300 text-[15px] max-w-md mx-auto leading-relaxed">
@@ -119,46 +111,18 @@ export default function ContactSection() {
           ))}
         </div>
 
-        {/* CTA area */}
-        <div
-          ref={ctaReveal.ref}
-          className={`reveal ${ctaReveal.visible ? "visible" : ""}`}
-          style={{ transitionDelay: "0.2s" }}
-        >
-          <div className="formal-card-dark rounded-md border-t border-gold/15 max-w-2xl mx-auto p-8 md:p-10 text-center">
-            <h3 className="text-xl md:text-2xl font-serif font-bold text-gold-gradient mb-3">
-              {t("전문 상담을 원하시나요?", "Need Expert Consultation?")}
-            </h3>
-            <p className="text-gray-300 text-sm mb-8 leading-relaxed">
-              {t(
-                "국제 IP 분쟁, 특허 전략, 라이선싱 등 어떤 주제든 편하게 문의해 주세요.",
-                "Whether it's international IP disputes, patent strategy, or licensing — don't hesitate to contact us."
-              )}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#professionals"
-                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="group relative px-10 py-4 bg-gold text-navy font-bold text-sm tracking-wide rounded-none border border-gold-dark/20 hover:bg-gold-light transition-colors duration-300"
-              >
-                <span className="font-serif text-base">Pro &amp; Team</span>
-              </a>
-              <a
-                href="#professionals"
-                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="group flex items-center gap-2.5 text-[12px] text-gray-300 hover:text-gold tracking-wider font-serif small-caps transition-colors duration-200"
-              >
-                <span>{t("맨 위로", "Back to Top")}</span>
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path
-                    fillRule="evenodd"
-                    d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
+        {/* Back to top */}
+        <div className="text-center mt-12">
+          <a
+            href="#professionals"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            className="inline-flex items-center gap-2 text-[12px] text-gray-400 hover:text-gold tracking-wider transition-colors duration-200"
+          >
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path fillRule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clipRule="evenodd" />
+            </svg>
+            <span>{t("맨 위로", "Back to Top")}</span>
+          </a>
         </div>
       </div>
     </section>
