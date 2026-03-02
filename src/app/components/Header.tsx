@@ -43,8 +43,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-navy ${
-        scrolled ? "border-b border-gold/10 py-3" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white ${
+        scrolled ? "border-b border-gray-200 shadow-sm py-3" : "py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -62,7 +62,7 @@ export default function Header() {
             >
               Pro &amp; Team
             </span>
-            <span className={`text-[9px] text-gray-400 font-medium ${
+            <span className={`text-[9px] text-gray-500 font-medium ${
               lang === "en" ? "tracking-[0.2em] font-serif" : "tracking-[0.08em]"
             }`}>
               {t("프로앤팀 특허법률사무소", "IP Law Firm")}
@@ -80,8 +80,8 @@ export default function Header() {
                 href={item.href}
                 className={`animated-underline relative text-[13px] font-medium tracking-wide px-4 py-2 transition-all duration-200 ${
                   isActive
-                    ? "text-gold active"
-                    : "text-gray-300 hover:text-gold"
+                    ? "text-gold-dark active"
+                    : "text-gray-600 hover:text-gold-dark"
                 }`}
               >
                 {item.label}
@@ -94,14 +94,14 @@ export default function Header() {
             onClick={() => setLang(lang === "ko" ? "en" : "ko")}
             className="ml-3 flex items-center gap-0 text-[11px] font-medium tracking-wider"
           >
-            <span className={lang === "ko" ? "text-gold" : "text-gray-400 hover:text-gray-200 transition-colors"}>KO</span>
-            <span className="text-gray-500 mx-1">/</span>
-            <span className={lang === "en" ? "text-gold" : "text-gray-400 hover:text-gray-200 transition-colors"}>EN</span>
+            <span className={lang === "ko" ? "text-gold-dark" : "text-gray-400 hover:text-gray-600 transition-colors"}>KO</span>
+            <span className="text-gray-300 mx-1">/</span>
+            <span className={lang === "en" ? "text-gold-dark" : "text-gray-400 hover:text-gray-600 transition-colors"}>EN</span>
           </button>
 
           <a
             href="#contact"
-            className="ml-4 px-5 py-2 bg-gold/15 border border-gold/30 text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-gold/20 hover:border-gold/40 transition-all duration-300"
+            className="ml-4 px-5 py-2 bg-navy text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-navy-light transition-all duration-300"
           >
             {t("상담 문의", "Consultation")}
           </a>
@@ -109,7 +109,7 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-300 hover:text-gold transition-colors w-10 h-10 flex items-center justify-center rounded-sm hover:bg-white/5"
+          className="md:hidden text-gray-600 hover:text-gold-dark transition-colors w-10 h-10 flex items-center justify-center rounded-sm hover:bg-gray-100"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="메뉴"
         >
@@ -127,7 +127,7 @@ export default function Header() {
           mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="mx-4 mt-3 mb-2 bg-navy-light border-t border-b border-gold/10 overflow-hidden">
+        <nav className="mx-4 mt-3 mb-2 bg-cream border-t border-b border-gray-200 overflow-hidden">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.slice(1);
             return (
@@ -135,10 +135,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 px-6 py-4 text-sm font-medium border-b border-white/[0.03] last:border-0 transition-colors ${
+                className={`flex items-center gap-3 px-6 py-4 text-sm font-medium border-b border-gray-100 last:border-0 transition-colors ${
                   isActive
-                    ? "text-gold bg-gold/[0.06]"
-                    : "text-gray-300 hover:text-gold hover:bg-white/[0.05]"
+                    ? "text-gold-dark bg-gold/[0.08]"
+                    : "text-gray-600 hover:text-gold-dark hover:bg-gray-50"
                 }`}
               >
                 {isActive && (
@@ -154,12 +154,12 @@ export default function Header() {
               setLang(lang === "ko" ? "en" : "ko");
               setMobileOpen(false);
             }}
-            className="w-full flex items-center gap-3 px-6 py-4 text-sm font-medium text-gray-300 hover:text-gold transition-colors border-t border-white/[0.05]"
+            className="w-full flex items-center gap-3 px-6 py-4 text-sm font-medium text-gray-600 hover:text-gold-dark transition-colors border-t border-gray-100"
           >
             <span className="text-[11px] tracking-wider">
-              <span className={lang === "ko" ? "text-gold" : ""}>KO</span>
-              <span className="text-gray-500 mx-1">/</span>
-              <span className={lang === "en" ? "text-gold" : ""}>EN</span>
+              <span className={lang === "ko" ? "text-gold-dark" : ""}>KO</span>
+              <span className="text-gray-300 mx-1">/</span>
+              <span className={lang === "en" ? "text-gold-dark" : ""}>EN</span>
             </span>
           </button>
         </nav>

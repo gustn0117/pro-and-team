@@ -121,7 +121,7 @@ function ProfileCard({
     <div ref={revealRef} className={`${revealClass} mb-12`}>
       <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100/80 relative">
         {/* Header with photo */}
-        <div className="relative bg-navy px-8 md:px-12 py-8 md:py-10">
+        <div className="relative bg-cream-dark/60 border-b border-gray-200 px-8 md:px-12 py-8 md:py-10">
           <div className="relative flex flex-col md:flex-row md:items-center gap-7">
             <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md overflow-hidden">
               <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover object-top" />
@@ -129,16 +129,16 @@ function ProfileCard({
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold font-serif text-gold-gradient mb-1.5">
+                  <h3 className="text-3xl md:text-4xl font-bold font-serif text-navy mb-1.5">
                     {lang === "ko" ? nameKo : nameEn}
                   </h3>
-                  <p className="text-sm text-gray-300 font-light tracking-wide">
+                  <p className="text-sm text-gray-500 font-light tracking-wide">
                     {lang === "ko" ? nameEn : nameKo}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {badges.map((b, i) => (
-                    <span key={i} className="text-[12px] px-4 py-2 rounded bg-gold/15 text-gold border border-gold/25 font-medium">
+                    <span key={i} className="text-[12px] px-4 py-2 rounded bg-navy text-gold border border-navy-light font-medium">
                       {b}
                     </span>
                   ))}
@@ -179,7 +179,7 @@ function ProfileCard({
           <div className="flex flex-wrap items-center gap-3 mb-8 pb-8 border-b border-gray-100">
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wider mr-1 font-serif">{l.qualifications}</span>
             {qualifications.map((q, i) => (
-              <span key={i} className="text-[13px] px-4 py-2 rounded-sm bg-navy text-gold font-medium font-serif">{q}</span>
+              <span key={i} className="text-[13px] px-4 py-2 rounded-sm bg-navy text-gold font-medium font-serif border border-navy-light">{q}</span>
             ))}
           </div>
 

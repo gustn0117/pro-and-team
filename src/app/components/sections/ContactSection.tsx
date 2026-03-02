@@ -66,17 +66,17 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-navy-dark via-navy to-navy-dark">
+    <section id="contact" className="py-28 md:py-40 scroll-mt-20 relative overflow-hidden bg-cream">
       <div
         ref={section.ref}
         className={`reveal ${section.visible ? "visible" : ""} relative z-10 max-w-5xl mx-auto px-6`}
       >
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-serif text-gold-gradient mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy mb-6">
             {t("연락처", "Contact")}
           </h2>
-          <p className="text-gray-300 text-[15px] max-w-md mx-auto leading-relaxed">
+          <p className="text-gray-600 text-[15px] max-w-md mx-auto leading-relaxed">
             {t(
               "국제 IP 분쟁 대응, 특허 전략 수립, 라이선싱 협상 등 지식재산 관련 전문 상담이 필요하시면 언제든 연락해 주세요.",
               "For expert consultation on international IP disputes, patent strategy, licensing negotiations, and more — feel free to reach out anytime."
@@ -89,23 +89,23 @@ export default function ContactSection() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group formal-card-dark rounded-md p-10 text-center"
+              className="group formal-card rounded-md p-10 text-center"
             >
-              <div className="w-14 h-14 rounded-md bg-gold/[0.10] flex items-center justify-center text-gold mx-auto mb-6 group-hover:bg-gold/[0.15] group-hover:text-gold-light transition-colors duration-300">
+              <div className="w-14 h-14 rounded-md bg-gold/10 flex items-center justify-center text-gold-dark mx-auto mb-6 group-hover:bg-gold/15 transition-colors duration-300">
                 {item.icon}
               </div>
-              <p className="text-xs text-gold/80 font-serif font-semibold tracking-wider small-caps mb-3">
+              <p className="text-xs text-gold-dark font-serif font-semibold tracking-wider small-caps mb-3">
                 {item.label}
               </p>
               {item.href ? (
                 <a
                   href={item.href}
-                  className="text-gray-200 text-[15px] hover:text-gold transition-colors duration-200"
+                  className="text-gray-800 text-[15px] hover:text-gold-dark transition-colors duration-200"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-gray-200 text-[15px] leading-relaxed">{item.value}</p>
+                <p className="text-gray-800 text-[15px] leading-relaxed">{item.value}</p>
               )}
             </div>
           ))}
@@ -116,7 +116,7 @@ export default function ContactSection() {
           <a
             href="#professionals"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            className="inline-flex items-center gap-2 text-[12px] text-gray-400 hover:text-gold tracking-wider transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-[12px] text-gray-500 hover:text-gold-dark tracking-wider transition-colors duration-200"
           >
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clipRule="evenodd" />
