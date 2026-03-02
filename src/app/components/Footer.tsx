@@ -27,12 +27,6 @@ export default function Footer() {
             <p className="text-[10px] text-gray-500 tracking-[0.2em] font-serif small-caps mb-5">
               {t("프로앤팀 특허법률사무소", "IP Law Firm")}
             </p>
-            <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
-              {t(
-                "국제 IP 분쟁 전문 경력 52년의 노하우로, 기업의 글로벌 지식재산 전략을 이끕니다.",
-                "With 52 years of expertise in international IP disputes, we lead corporate global intellectual property strategy."
-              )}
-            </p>
           </div>
 
           {/* Col 2: Navigation */}

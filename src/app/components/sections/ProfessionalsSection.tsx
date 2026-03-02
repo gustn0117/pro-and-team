@@ -281,7 +281,7 @@ const leeData = {
 
 const kwonData = {
   nameKo: "권오진",
-  nameEn: "Ojin Kwon",
+  nameEn: "Ohjin Kwon",
   photo: "/photos/kwon-ojin.jpg",
   badges: { ko: ["미국변호사 (Washington, D.C.)"], en: ["Attorney at Law (Washington, D.C., US)"] },
   summary: {
