@@ -138,7 +138,7 @@ function ProfileCard({
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {badges.map((b, i) => (
-                    <span key={i} className="text-[12px] px-4 py-2 rounded bg-navy text-gold border border-navy-light font-medium">
+                    <span key={i} className="text-[13px] px-4 py-2 rounded-full bg-white text-navy border border-gray-200 font-medium shadow-sm">
                       {b}
                     </span>
                   ))}
@@ -179,7 +179,7 @@ function ProfileCard({
           <div className="flex flex-wrap items-center gap-3 mb-8 pb-8 border-b border-gray-100">
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wider mr-1 font-serif">{l.qualifications}</span>
             {qualifications.map((q, i) => (
-              <span key={i} className="text-[13px] px-4 py-2 rounded-sm bg-navy text-gold font-medium font-serif border border-navy-light">{q}</span>
+              <span key={i} className="text-[13px] px-4 py-2 rounded-full bg-white text-navy font-medium font-serif border border-gray-200 shadow-sm">{q}</span>
             ))}
           </div>
 
