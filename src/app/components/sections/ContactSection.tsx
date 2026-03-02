@@ -73,6 +73,7 @@ export default function ContactSection() {
       >
         {/* Header */}
         <div className="text-center mb-16">
+          <div className="w-10 h-1 bg-gold rounded-full mb-5 mx-auto" />
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy mb-6">
             {t("연락처", "Contact")}
           </h2>
@@ -89,9 +90,9 @@ export default function ContactSection() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="group formal-card rounded-md p-10 text-center"
+              className="group formal-card rounded-lg p-10 text-center"
             >
-              <div className="w-14 h-14 rounded-md bg-gold/10 flex items-center justify-center text-gold-dark mx-auto mb-6 group-hover:bg-gold/15 transition-colors duration-300">
+              <div className="w-14 h-14 rounded-full bg-cream-dark flex items-center justify-center text-gold-dark mx-auto mb-6 group-hover:bg-gold/15 transition-colors duration-300 ring-1 ring-gray-200/50">
                 {item.icon}
               </div>
               <p className="text-xs text-gold-dark font-serif font-semibold tracking-wider small-caps mb-3">

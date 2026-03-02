@@ -12,9 +12,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-white text-gray-600 overflow-hidden">
-      {/* Top border */}
-      <div className="border-t border-gray-200" />
+    <footer className="relative bg-cream text-gray-600 overflow-hidden">
+      {/* Top accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10">
         {/* Main 3-column grid */}
@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom divider + copyright */}
-        <div className="border-t border-gray-200 mb-6" />
+        <div className="border-t border-gray-300/50 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-gray-400 tracking-wide">
             &copy; {new Date().getFullYear()} {t("프로앤팀 특허법률사무소", "Pro & Team IP Law Firm")}. All rights reserved.

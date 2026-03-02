@@ -43,8 +43,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white ${
-        scrolled ? "border-b border-gray-200 shadow-sm py-3" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md ${
+        scrolled ? "border-b border-gray-200/80 shadow-[0_1px_8px_rgba(0,0,0,0.06)] py-3" : "py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -101,7 +101,7 @@ export default function Header() {
 
           <a
             href="#contact"
-            className="ml-4 px-5 py-2 bg-navy text-gold text-[12px] font-serif font-semibold tracking-wider small-caps rounded-none hover:bg-navy-light transition-all duration-300"
+            className="ml-4 px-5 py-2 bg-gold-dark text-white text-[12px] font-semibold tracking-wider rounded hover:bg-gold transition-all duration-300"
           >
             {t("상담 문의", "Consultation")}
           </a>

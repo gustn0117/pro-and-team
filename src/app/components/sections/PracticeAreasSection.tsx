@@ -106,6 +106,7 @@ export default function PracticeAreasSection() {
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
+          <div className="w-10 h-1 bg-gold rounded-full mb-5" />
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy mb-4">
             {t("주요업무", "Practice Areas")}
           </h2>

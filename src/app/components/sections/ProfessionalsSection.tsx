@@ -119,11 +119,11 @@ function ProfileCard({
 
   return (
     <div ref={revealRef} className={`${revealClass} mb-12`}>
-      <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100/80 relative">
+      <div className="bg-white rounded-lg overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] transition-all duration-300 border border-gray-100 relative">
         {/* Header with photo */}
-        <div className="relative bg-cream-dark/60 border-b border-gray-200 px-8 md:px-12 py-8 md:py-10">
+        <div className="relative bg-gradient-to-r from-cream to-cream-dark/40 border-b border-gray-200/80 px-8 md:px-12 py-8 md:py-10">
           <div className="relative flex flex-col md:flex-row md:items-center gap-7">
-            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-md overflow-hidden">
+            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-lg overflow-hidden ring-2 ring-white shadow-md">
               <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover object-top" />
             </div>
             <div className="flex-1">
@@ -184,11 +184,11 @@ function ProfileCard({
           </div>
 
           {/* Toggle */}
-          <button onClick={onToggle} className="group flex items-center gap-2 text-sm text-gold-dark hover:text-gold font-medium transition-colors">
-            <svg className={`w-4 h-4 text-gold transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
+          <button onClick={onToggle} className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-lg border border-gold/30 bg-gold/5 text-sm text-gold-dark hover:bg-gold/10 hover:border-gold/50 font-medium transition-all duration-200">
+            <span>{expanded ? l.collapse : l.expand}</span>
+            <svg className={`w-4 h-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
             </svg>
-            <span>{expanded ? l.collapse : l.expand}</span>
           </button>
 
           {/* Expanded content */}
@@ -375,6 +375,7 @@ export default function ProfessionalsSection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Section header */}
         <div ref={header.ref} className={`reveal ${header.visible ? "visible" : ""} mb-16 md:mb-20`}>
+          <div className="w-10 h-1 bg-gold rounded-full mb-5" />
           <h2 className="text-4xl md:text-5xl font-bold font-serif text-navy">
             {t("구성원", "Our Team")}
           </h2>
