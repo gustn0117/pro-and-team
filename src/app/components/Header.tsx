@@ -54,18 +54,18 @@ export default function Header() {
           className="group flex items-center gap-3"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
+          <img
+            src="/logo.png"
+            alt="Pro & Team"
+            className={`transition-all duration-300 ${
+              scrolled ? "h-7" : "h-9"
+            }`}
+          />
           <div className="flex flex-col">
-            <span
-              className={`font-bold font-serif tracking-wide text-gold-gradient transition-all duration-300 ${
-                scrolled ? "text-lg" : "text-xl"
-              }`}
-            >
-              Pro &amp; Team
-            </span>
             <span className={`text-[9px] text-gray-500 font-medium ${
-              lang === "en" ? "tracking-[0.2em] font-serif" : "tracking-[0.08em]"
+              lang === "en" ? "tracking-[0.15em] font-serif" : "tracking-[0.08em]"
             }`}>
-              {t("프로앤팀 특허법률사무소", "IP Law Firm")}
+              {t("특허법률사무소", "Intellectual Property")}
             </span>
           </div>
         </a>

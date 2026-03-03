@@ -4,9 +4,9 @@
   --color-navy: #161d2b;
   --color-navy-light: #1e2940;
   --color-navy-dark: #0c1219;
-  --color-gold: #c9a84c;
-  --color-gold-dark: #a6883a;
-  --color-gold-light: #d4b865;
+  --color-gold: #e8732a;
+  --color-gold-dark: #d4611e;
+  --color-gold-light: #f08c42;
   --color-cream: #f7f5ef;
   --color-cream-dark: #ece8dc;
   --font-family-sans: 'Noto Sans KR', 'Segoe UI', sans-serif;
@@ -127,16 +127,16 @@ body {
 }
 
 .side-nav-dot:hover {
-  background: rgba(201, 168, 76, 0.5);
-  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(232, 115, 42, 0.5);
+  border-color: rgba(232, 115, 42, 0.5);
   transform: scale(1.15);
 }
 
 .side-nav-dot.active {
   width: 10px;
   height: 10px;
-  background: #c9a84c;
-  border-color: #c9a84c;
+  background: #e8732a;
+  border-color: #e8732a;
 }
 
 .side-nav-dot .side-nav-label {
@@ -168,7 +168,7 @@ body {
    ═══════════════════════════════════════════════ */
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #d4b865 0%, #c9a84c 40%, #a6883a 100%);
+  background: linear-gradient(135deg, #f08c42 0%, #e8732a 40%, #d4611e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -228,7 +228,7 @@ body {
   left: 0;
   width: 100%;
   height: 1.5px;
-  background: linear-gradient(90deg, #a6883a, #c9a84c);
+  background: linear-gradient(90deg, #d4611e, #e8732a);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -246,7 +246,7 @@ body {
 .typewriter-cursor::after {
   content: '|';
   display: inline-block;
-  color: rgba(201, 168, 76, 0.5);
+  color: rgba(232, 115, 42, 0.5);
   animation: blink 1s step-end infinite;
   margin-left: 2px;
   font-weight: 300;

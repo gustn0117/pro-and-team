@@ -21,11 +21,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-14">
           {/* Col 1: Branding */}
           <div>
-            <p className="text-navy font-bold font-serif text-xl tracking-wide mb-2">
-              Pro &amp; Team
-            </p>
+            <img
+              src="/logo.png"
+              alt="Pro & Team"
+              className="h-8 mb-2"
+            />
             <p className="text-[10px] text-gray-500 tracking-[0.2em] font-serif small-caps mb-5">
-              {t("프로앤팀 특허법률사무소", "IP Law Firm")}
+              {t("특허법률사무소", "Intellectual Property")}
             </p>
           </div>
 
@@ -104,7 +106,7 @@ export default function Footer() {
         <div className="border-t border-gray-300/50 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-gray-400 tracking-wide">
-            &copy; {new Date().getFullYear()} {t("프로앤팀 특허법률사무소", "Pro & Team IP Law Firm")}. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("프로앤팀 특허법률사무소", "Pro & Team Intellectual Property")}. All rights reserved.
           </p>
           <p className="text-[10px] text-gray-400 tracking-wide font-serif small-caps">
             {t("국제 IP 분쟁 전문", "International IP Dispute Specialists")}
