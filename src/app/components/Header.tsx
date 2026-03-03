@@ -57,7 +57,7 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="Pro & Team"
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-300 mix-blend-multiply ${
               scrolled ? "h-7" : "h-9"
             }`}
           />

@@ -24,7 +24,7 @@ export default function Footer() {
             <img
               src="/logo.png"
               alt="Pro & Team"
-              className="h-8 mb-2"
+              className="h-8 mb-2 mix-blend-multiply"
             />
             <p className="text-[10px] text-gray-500 tracking-[0.2em] font-serif small-caps mb-5">
               {t("특허법률사무소", "Intellectual Property")}
