@@ -218,7 +218,7 @@ function ProfileCard({
 const leeData = {
   nameKo: "이승헌",
   nameEn: "Sean (Seunghun) Lee",
-  photo: "/photos/lee-seunghun.jpg",
+  photo: "/photos/lee-seunghun.png",
   badges: { ko: ["변리사", "미국변호사 (Illinois)"], en: ["Patent Attorney (KR)", "Attorney at Law (Illinois, US)"] },
   summary: {
     ko: [
@@ -282,7 +282,7 @@ const leeData = {
 const kwonData = {
   nameKo: "권오진",
   nameEn: "Ohjin Kwon",
-  photo: "/photos/kwon-ojin.jpg",
+  photo: "/photos/kwon-ojin.png",
   badges: { ko: ["미국변호사 (Washington, D.C.)"], en: ["Attorney at Law (Washington, D.C., US)"] },
   summary: {
     ko: [
