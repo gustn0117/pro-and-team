@@ -123,8 +123,8 @@ function ProfileCard({
         {/* Header with photo */}
         <div className="relative bg-gradient-to-r from-cream to-cream-dark/40 border-b border-gray-200/80 px-8 md:px-12 py-8 md:py-10">
           <div className="relative flex flex-col md:flex-row md:items-center gap-7">
-            <div className="shrink-0 w-28 h-36 md:w-32 md:h-40 rounded-lg overflow-hidden ring-2 ring-white shadow-md">
-              <Image src={photo} alt={nameKo} width={128} height={170} className="w-full h-full object-cover object-top" />
+            <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-lg overflow-hidden ring-2 ring-white shadow-md">
+              <Image src={photo} alt={nameKo} width={128} height={128} className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
