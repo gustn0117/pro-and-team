@@ -359,14 +359,122 @@ const kwonData = {
   },
 };
 
+const choData = {
+  nameKo: "조경선",
+  nameEn: "Kyungsun Cho",
+  photo: "/photos/cho-kyungsun.png",
+  badges: { ko: ["자문"], en: ["Advisor"] },
+  summary: {
+    ko: [
+      "22년간 한국발명진흥회(정부공인 기술평가기관) 특허기술거래평가 팀장, 지식재산평가센터 소장 역임",
+      "경영학 박사, 미국공인회계사(Maryland), 기술거래사, 경영지도사",
+      "특허권, 상표권, 저작권, 데이터 등 가치평가",
+      "기술가치평가 방법연구, 평가기법, 평가매뉴얼 개발",
+      "기술사업타당성 분석/평가, 기술사업화 관련 컨설팅 및 교육",
+      "지식재산권 자본화, 지식재산금융 및 투자 IR 컨설팅",
+    ],
+    en: [
+      "22 years at KIPA (government-authorized technology evaluation agency) as Head of Patent Technology Transaction & Evaluation and Director of IP Valuation Center",
+      "Ph.D. in Business Administration, US CPA (Maryland), Certified Technology Broker, Certified Management Consultant",
+      "Valuation of patents, trademarks, copyrights, and data assets",
+      "Technology valuation methodology research, evaluation techniques, and manual development",
+      "Technology commercialization feasibility analysis/evaluation, consulting, and training",
+      "IP capitalization, IP finance, and investment IR consulting",
+    ],
+  },
+  timeline: {
+    ko: [
+      { year: "2010 – 현재", desc: "성균관대 기술경영전문대학원 겸임교수 (기술가치평가)" },
+      { year: "2008 – 현재", desc: "서울대 공대 기술경영경제정책 대학원 강사" },
+      { year: "2023 – 현재", desc: "울산과학기술원 기술경영전문대학원 겸임교수" },
+      { year: "2014 – 현재", desc: "한국금융연수원 강사 (지식재산권 가치평가)" },
+      { year: "2001 – 2022", desc: "한국발명진흥회 특허기술 거래평가팀장, 지식재산평가센터 소장" },
+      { year: "2021 – 2023", desc: "한국지적재산권경상학회 회장" },
+      { year: "2014 – 2016", desc: "한국산업기술진흥원 기술평가 대표위원" },
+    ],
+    en: [
+      { year: "2010 – Present", desc: "Adjunct Professor, Sungkyunkwan University Graduate School of Technology Management (Technology Valuation)" },
+      { year: "2008 – Present", desc: "Lecturer, Seoul National University Graduate School of Technology Management, Economics & Policy" },
+      { year: "2023 – Present", desc: "Adjunct Professor, UNIST Graduate School of Technology Management" },
+      { year: "2014 – Present", desc: "Lecturer, Korea Banking Institute (IP Valuation)" },
+      { year: "2001 – 2022", desc: "Head of Patent Technology Transaction & Evaluation / Director of IP Valuation Center, KIPA" },
+      { year: "2021 – 2023", desc: "President, Korean Intellectual Property Accounting Association" },
+      { year: "2014 – 2016", desc: "Lead Commissioner for Technology Evaluation, KIAT" },
+    ],
+  },
+  education: {
+    ko: ["경영학 박사"],
+    en: ["Ph.D. in Business Administration"],
+  },
+  qualifications: { ko: ["미국공인회계사 (Maryland)", "기술거래사", "경영지도사"], en: ["US CPA (Maryland)", "Certified Technology Broker", "Certified Management Consultant"] },
+  practiceAreas: {
+    ko: [
+      { title: "기술가치평가", items: ["특허권, 상표권, 저작권, 데이터 등 가치평가", "기술가치평가 방법연구, 평가기법, 평가매뉴얼 개발"] },
+      { title: "기술사업화 컨설팅", items: ["기술사업타당성 분석/평가", "기술사업화 관련 컨설팅 및 교육"] },
+      { title: "지식재산금융", items: ["지식재산권 자본화", "지식재산금융 및 투자 IR 컨설팅"] },
+    ],
+    en: [
+      { title: "Technology Valuation", items: ["Valuation of patents, trademarks, copyrights, and data assets", "Technology valuation methodology research, evaluation techniques, and manual development"] },
+      { title: "Technology Commercialization Consulting", items: ["Technology business feasibility analysis/evaluation", "Technology commercialization consulting and training"] },
+      { title: "IP Finance", items: ["IP capitalization", "IP finance and investment IR consulting"] },
+    ],
+  },
+  repMatters: {
+    ko: [
+      { title: "가치평가 모형 및 가이드 개발", items: [
+        "특허권 감정평가모델 및 가이드 개발 및 교육 (한국감정평가사협회, 2024)",
+        "데이터가치평가매뉴얼 개발 (신용보증기금, 2022 / 중진공, 2023)",
+        "소프트웨어저작권 가치평가모형 및 가이드 개발 (한국SW저작권협회, 2021)",
+        "해양수산 기술가치평가모델 구축 (한국해양과학기술진흥원, 2015)",
+        "의약 바이오 기술가치평가모형 개발 (지식경제부, 2011–2012)",
+      ]},
+      { title: "연구 및 정책", items: [
+        "시장접근법 기반의 기술평가모형 정립 (한국산업기술진흥원, 2012)",
+        "기업 기술력 등급평가 모델개선 및 개선방안 (지식경제부/KIAT, 2011)",
+        "국제회계기준 도입에 대응할 기술평가방법 연구 (지식경제부/KIAT, 2009–2010)",
+        "특허침해 손해액산정 방법 및 기준 제안 (지식경제부/KIAT, 2009–2010)",
+      ]},
+      { title: "저서 및 교육", items: [
+        "특허권, 상표권, 기술가치평가 수행 (한국발명진흥회, 2001–2022)",
+        "지식재산평가거래 학습모듈 대표 집필 (한국직업능력개발원, 2016)",
+        "지식재산금융과 가치평가실무 (한국금융연수원, 2014)",
+        "기술가치평가론 (산업자원부, 2007) 공동저자 등 다수",
+      ]},
+    ],
+    en: [
+      { title: "Valuation Model & Guide Development", items: [
+        "Patent appraisal model and guide development & training (Korea Association of Property Appraisers, 2024)",
+        "Data valuation manual development (Korea Credit Guarantee Fund, 2022 / SBC, 2023)",
+        "Software copyright valuation model and guide (Korea SW Copyright Association, 2021)",
+        "Maritime technology valuation model (KIMST, 2015)",
+        "Pharmaceutical/bio technology valuation model (MKE, 2011–2012)",
+      ]},
+      { title: "Research & Policy", items: [
+        "Market-based technology valuation model development (KIAT, 2012)",
+        "Corporate technology capability rating model improvement (MKE/KIAT, 2011)",
+        "Technology valuation methodology for IFRS adoption (MKE/KIAT, 2009–2010)",
+        "Patent infringement damages calculation methodology (MKE/KIAT, 2009–2010)",
+      ]},
+      { title: "Publications & Education", items: [
+        "Patent, trademark, and technology valuations (KIPA, 2001–2022)",
+        "Lead author, IP Valuation & Transaction Learning Module (KRIVET, 2016)",
+        "IP Finance and Valuation Practice (Korea Banking Institute, 2014)",
+        "Technology Valuation Theory (MOTIE, 2007), co-author, and others",
+      ]},
+    ],
+  },
+};
+
 /* ────── Main Section ────── */
 export default function ProfessionalsSection() {
   const { lang, t } = useLanguage();
   const header = useReveal();
   const lee = useReveal();
   const kwon = useReveal();
+  const cho = useReveal();
   const [expandedLee, setExpandedLee] = useState(false);
   const [expandedKwon, setExpandedKwon] = useState(false);
+  const [expandedCho, setExpandedCho] = useState(false);
 
   const pick = <T,>(b: Bilingual<T>): T => (lang === "ko" ? b.ko : b.en);
 
@@ -415,6 +523,24 @@ export default function ProfessionalsSection() {
           repMatters={pick(kwonData.repMatters)}
           expanded={expandedKwon}
           onToggle={() => setExpandedKwon(!expandedKwon)}
+        />
+
+        <ProfileCard
+          lang={lang}
+          revealRef={cho.ref}
+          revealClass={`reveal ${cho.visible ? "visible" : ""}`}
+          nameKo={choData.nameKo}
+          nameEn={choData.nameEn}
+          photo={choData.photo}
+          badges={pick(choData.badges)}
+          summaryItems={pick(choData.summary)}
+          timeline={pick(choData.timeline)}
+          education={pick(choData.education)}
+          qualifications={pick(choData.qualifications)}
+          practiceAreas={pick(choData.practiceAreas)}
+          repMatters={pick(choData.repMatters)}
+          expanded={expandedCho}
+          onToggle={() => setExpandedCho(!expandedCho)}
         />
       </div>
     </section>
