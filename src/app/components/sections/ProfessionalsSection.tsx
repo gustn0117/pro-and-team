@@ -403,8 +403,8 @@ const choData = {
     ],
   },
   education: {
-    ko: ["전북대 일반대학원 경영학 박사 (2002)"],
-    en: ["Ph.D. in Business Administration, Jeonbuk National University (2002)"],
+    ko: ["전북대 일반대학원 경영학 박사 (2002.08)"],
+    en: ["Ph.D. in Business Administration, Jeonbuk National University (Aug 2002)"],
   },
   qualifications: { ko: ["미국공인회계사 (Maryland)", "기술거래사", "경영지도사"], en: ["US CPA (Maryland)", "Certified Technology Broker", "Certified Management Consultant"] },
   practiceAreas: {
