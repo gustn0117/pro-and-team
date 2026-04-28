@@ -103,10 +103,10 @@ function SummaryList({ items }: { items: string[] }) {
 
 /* ────── Profile Card ────── */
 function ProfileCard({
-  nameKo, nameEn, photo, badges, summaryItems, timeline, education, qualifications,
+  nameKo, nameEn, photo, email, badges, summaryItems, timeline, education, qualifications,
   practiceAreas, repMatters, expanded, onToggle, revealRef, revealClass, lang,
 }: {
-  nameKo: string; nameEn: string; photo: string; badges: string[];
+  nameKo: string; nameEn: string; photo: string; email?: string; badges: string[];
   summaryItems: string[]; timeline: TimelineItem[]; education: string[];
   qualifications: string[]; practiceAreas: PracticeArea[]; repMatters: RepMatter[];
   expanded: boolean; onToggle: () => void;
@@ -135,6 +135,18 @@ function ProfileCard({
                   <p className="text-sm text-gray-500 font-light tracking-wide">
                     {lang === "ko" ? nameEn : nameKo}
                   </p>
+                  {email && (
+                    <a
+                      href={`mailto:${email}`}
+                      className="inline-flex items-center gap-1.5 mt-2 text-sm text-gold-dark hover:text-gold transition-colors font-medium"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                      {email}
+                    </a>
+                  )}
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {badges.map((b, i) => (
@@ -219,6 +231,7 @@ const leeData = {
   nameKo: "이승헌",
   nameEn: "Sean (Seunghun) Lee",
   photo: "/photos/lee-seunghun.png",
+  email: "shlee@proteamip.com",
   badges: { ko: ["변리사", "미국변호사 (Illinois)"], en: ["Patent Attorney (KR)", "Attorney at Law (Illinois, US)"] },
   summary: {
     ko: [
@@ -283,6 +296,7 @@ const kwonData = {
   nameKo: "권오진",
   nameEn: "Ohjin Kwon",
   photo: "/photos/kwon-ojin.png",
+  email: "kwon@proteamip.com",
   badges: { ko: ["미국변호사 (Washington, D.C.)"], en: ["Attorney at Law (Washington, D.C., US)"] },
   summary: {
     ko: [
@@ -496,6 +510,7 @@ export default function ProfessionalsSection() {
           nameKo={leeData.nameKo}
           nameEn={leeData.nameEn}
           photo={leeData.photo}
+          email={leeData.email}
           badges={pick(leeData.badges)}
           summaryItems={pick(leeData.summary)}
           timeline={pick(leeData.timeline)}
@@ -514,6 +529,7 @@ export default function ProfessionalsSection() {
           nameKo={kwonData.nameKo}
           nameEn={kwonData.nameEn}
           photo={kwonData.photo}
+          email={kwonData.email}
           badges={pick(kwonData.badges)}
           summaryItems={pick(kwonData.summary)}
           timeline={pick(kwonData.timeline)}
