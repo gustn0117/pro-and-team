@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 function useReveal() {
@@ -90,14 +90,145 @@ const areas = [
   {
     title: { ko: "특허 강의 (사례 위주)", en: "Patent Seminars" },
     items: {
-      ko: ["로열티를 많이 받을 수 있는 특허만들기", "해외 경고장 대응 및 소송 대응 사례들", "특허 계약(라이선스, 공동개발 등) 분쟁 사례들", "(연구원) 강한 특허를 만들기 위한 연구원의 역할", "(경영진) 사업성공에 특허활용한 사례들"],
-      en: ["Building patents that maximize royalty potential", "Case studies: responding to foreign C&D letters & litigation", "Case studies: patent contract disputes (licensing, joint development)", "(Researchers) Role of researchers in creating strong patents", "(Executives) Case studies on leveraging patents for business success"],
+      ko: [
+        "특허분쟁 100전 100승 기업의 특허만들기 사례",
+        "기업 경영진에 특허보고서 작성 사례들(출원, 분쟁, 협상 보고서 등, 실제 사례 위주)",
+        "특허 분쟁 및 라이센싱 협상 사례들",
+        "해외 공동연구개발 계약서 분쟁 사례들",
+        "IP Indemnity 계약 협상 및 분쟁 사례들",
+        "라이센스 계약서에서 자주 발생하는 실수 사례들",
+        "미국 고의침해 사례들 분석 및 사전 회피 전략",
+        "특허청구항 해석 및 침해 판단",
+        "미국법원에서의 합리적 로열티 산정 사례들",
+        "연구원 대상: 로열티 많이 받는 특허만들기 위한 연구원 역할",
+        "미국 특허 직접, 간접침해 및 대응 전략",
+        "특허 수익화 전략 및 법적 쟁점",
+        "미국 소송/ITC 개요 및 동종 업계의 소송 사례",
+        "디스커버리 및 사내 문서 관리 전략",
+        "미국 영업비밀 소송 및 분쟁 사례들",
+      ],
+      en: [
+        "Case studies: how a company undefeated in 100 patent disputes builds its patents",
+        "Case studies: writing patent reports for executives (filing, dispute & negotiation reports, based on real cases)",
+        "Case studies: patent disputes & licensing negotiations",
+        "Case studies: disputes over international joint R&D agreements",
+        "Case studies: IP indemnity negotiations & disputes",
+        "Case studies: common mistakes in license agreements",
+        "U.S. willful infringement cases: analysis & proactive avoidance strategies",
+        "Patent claim construction & infringement determination",
+        "Case studies: reasonable royalty calculations in U.S. courts",
+        "For researchers: the researcher's role in building high-royalty patents",
+        "U.S. direct & indirect patent infringement and response strategies",
+        "Patent monetization strategies & legal issues",
+        "Overview of U.S. litigation & ITC proceedings, with cases from your industry",
+        "Discovery & internal document management strategies",
+        "Case studies: U.S. trade secret litigation & disputes",
+      ],
     },
   },
 ];
 
-export default function PracticeAreasSection() {
+// Long lists show this many items up front, with a toggle for the rest.
+const PREVIEW_COUNT = 5;
+
+function AreaItem({ children }: { children: string }) {
+  return (
+    <li className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
+      <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
+      {children}
+    </li>
+  );
+}
+
+function AreaCard({ area }: { area: (typeof areas)[number] }) {
   const { lang, t } = useLanguage();
+  const [expanded, setExpanded] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const moreId = useId();
+
+  const title = lang === "ko" ? area.title.ko : area.title.en;
+  const subtitle = lang === "ko" ? area.title.en : area.title.ko;
+  const items = lang === "ko" ? area.items.ko : area.items.en;
+
+  // Collapse only when it hides at least two items.
+  const collapsible = items.length > PREVIEW_COUNT + 1;
+  const preview = collapsible ? items.slice(0, PREVIEW_COUNT) : items;
+  const rest = collapsible ? items.slice(PREVIEW_COUNT) : [];
+
+  const toggle = () => {
+    // Collapsing removes the list above the button. If the reader has scrolled
+    // past the card's top, bring it back into view so they aren't left further
+    // down the page.
+    const card = cardRef.current;
+    if (expanded && card && card.getBoundingClientRect().top < 0) {
+      card.scrollIntoView({ block: "start" });
+    }
+    setExpanded(!expanded);
+  };
+
+  return (
+    <div ref={cardRef} className="group formal-card-accent rounded-md overflow-hidden scroll-mt-24">
+      <div className="p-7 md:p-8">
+        <h3 className="text-base font-bold text-navy leading-snug font-serif mb-1.5">
+          {title}
+        </h3>
+        <p className="text-xs text-gray-500 mb-5 font-medium tracking-wide">
+          {subtitle}
+        </p>
+        <ul className="space-y-2.5">
+          {preview.map((item, i) => (
+            <AreaItem key={i}>{item}</AreaItem>
+          ))}
+        </ul>
+
+        {collapsible && (
+          <>
+            <div
+              id={moreId}
+              inert={!expanded}
+              className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out motion-reduce:transition-none ${
+                expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden min-h-0">
+                <ul className="space-y-2.5 pt-2.5">
+                  {rest.map((item, i) => (
+                    <AreaItem key={i}>{item}</AreaItem>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={toggle}
+              aria-expanded={expanded}
+              aria-controls={moreId}
+              className="mt-5 inline-flex items-center gap-1.5 rounded-md border border-gold/30 bg-gold/5 px-3.5 py-1.5 text-[13px] font-medium text-navy cursor-pointer transition-colors duration-200 hover:border-gold/50 hover:bg-gold/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            >
+              <span>
+                {expanded
+                  ? t("접기", "Show less")
+                  : t(`${rest.length}개 더보기`, `Show ${rest.length} more`)}
+              </span>
+              <svg
+                aria-hidden="true"
+                className={`w-3.5 h-3.5 text-gold-dark transition-transform duration-300 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function PracticeAreasSection() {
+  const { t } = useLanguage();
   const header = useReveal();
   const grid = useReveal();
 
@@ -123,38 +254,9 @@ export default function PracticeAreasSection() {
           ref={grid.ref}
           className={`reveal-stagger ${grid.visible ? "visible" : ""} grid md:grid-cols-2 gap-6`}
         >
-          {areas.map((area, idx) => {
-            const title = lang === "ko" ? area.title.ko : area.title.en;
-            const subtitle = lang === "ko" ? area.title.en : area.title.ko;
-            const items = lang === "ko" ? area.items.ko : area.items.en;
-
-            return (
-              <div
-                key={idx}
-                className="group formal-card-accent rounded-md overflow-hidden"
-              >
-                <div className="p-7 md:p-8">
-                  <h3 className="text-base font-bold text-navy leading-snug font-serif mb-1.5">
-                    {title}
-                  </h3>
-                  <p className="text-xs text-gray-500 mb-5 font-medium tracking-wide">
-                    {subtitle}
-                  </p>
-                  <ul className="space-y-2.5">
-                    {items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed"
-                      >
-                        <span className="mt-[7px] w-1 h-1 rounded-full bg-gold/50 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            );
-          })}
+          {areas.map((area, idx) => (
+            <AreaCard key={idx} area={area} />
+          ))}
         </div>
       </div>
     </section>
